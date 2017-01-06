@@ -1,24 +1,19 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Footer extends React.Component {
   render() {
    return(
     <footer id="footer">
-      <div className="container">
-        <div className="row">
-          <div className="grid_12">  
-            <div className="socials">
-              <a href="#" className="fa fa-twitter"></a>
-              <a href="#" className="fa fa-facebook"></a>
-              <a href="#" className="fa fa-google-plus"></a>
-              <a href="#" className="fa fa-pinterest"></a>
-            </div>
+      <Grid>
+        <Row>
+          <Col md={12}>
             <div className="copyright">
-              <span className="brand">Bliss </span> &copy; <span id="copyright-year"></span> |
+              <span className="brand">Menu </span> &copy; <span id="copyright-year"></span>
             </div>
-          </div>
-        </div>
-      </div> 
+          </Col>
+        </Row>
+      </Grid>
     </footer> 
    )
   }
