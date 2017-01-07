@@ -5,14 +5,14 @@ import { LinkContainer } from 'react-router-bootstrap';
 class Home extends React.Component {
  render() {
   return (
-    <Grid>
+    <Grid className="nolist">
       <Row>
         <Col md={4}>
           <LinkContainer to="/entree">
-              <NavItem eventKey={1}>
-                <h1>Entrees</h1>
-                <Image responsive src="/images/home-entree.jpg"/>
-              </NavItem>
+            <NavItem eventKey={1}>
+              <h1>Entrees</h1>
+              <Image responsive src="/images/home-entree.jpg"/>
+            </NavItem>
           </LinkContainer>
         </Col>
         <Col md={4}>

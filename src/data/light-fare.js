@@ -22,13 +22,14 @@ module.exports = [
     ],
     image: 'image.jpg'
   }, {
-    name: 'Chocolate Froot Smoo',
+    name: 'Chocolate Froot Schmoo',
     desc: 'Frozen berries & kale blended with delicious chocolate protein in soy milk',
     time: '5 min',
     image: 'image.jpg'
   }, {
-    name: 'Avocado Smoo',
+    name: 'Avocado Schmoo',
     desc: 'Avocado, honey, cinnamon, and tapioca pearls blended in soy milk',
-    image: 'image.jpg'
+    image: 'image.jpg',
+    time: '5 min',
   }
 ];

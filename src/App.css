@@ -22,11 +22,3 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-.gall_bot {
-  background: #f1f0f1;
-}
-
-.gall_block {
-  margin-bottom: 29px;
-}

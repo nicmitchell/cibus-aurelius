@@ -9,7 +9,7 @@ class Footer extends React.Component {
         <Row>
           <Col md={12}>
             <div className="copyright">
-              <span className="brand">Menu </span> &copy; <span id="copyright-year"></span>
+              <span id="copyright-year">&copy; { new Date().getFullYear() } Mind Riot</span>
             </div>
           </Col>
         </Row>

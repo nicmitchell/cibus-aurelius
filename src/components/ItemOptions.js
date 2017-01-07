@@ -3,9 +3,8 @@ import React from 'react';
 class ItemOptions extends React.Component {
   render() {
     return (
-      <form id="bookingForm">
         <div className="fl1">
-          <em>Options</em>
+          <em>Options: </em>
           <select name="Options" className="tmSelect auto" data-class="tmSelect tmSelect2" data-constraints="">
             {
               this.props.options.map((option) => {
@@ -14,7 +13,6 @@ class ItemOptions extends React.Component {
             }
           </select>
         </div>
-      </form>
     )
   }
 }
