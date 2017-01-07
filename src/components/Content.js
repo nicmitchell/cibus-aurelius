@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuItem from './MenuItem';
-import lighterFare from '../data/lighter-fare';
 
 class Content extends React.Component {
   render() {
@@ -9,7 +8,7 @@ class Content extends React.Component {
         <div className="container">
           <div className="row">
           { 
-            lighterFare.map((item, idx) => {
+            this.props.data.map((item, idx) => {
               return <MenuItem { ...item } key={ idx }/>
             })
           }

@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import MainRouter from './components/MainRouter';
 import './index.css';
+import './App.css';
+import './style.css';
 
 ReactDOM.render(
-  <App />,
+  <MainRouter />,
   document.getElementById('root')
 );
