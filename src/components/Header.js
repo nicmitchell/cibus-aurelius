@@ -5,9 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 class Header extends React.Component {
   render() {
     return (
-        <Grid>
-          <Row>
-            <Col sm={6} md={12}> 
             <Navbar inverse collapseOnSelect className="nolist">
               <Navbar.Header>
                 <Navbar.Brand>
@@ -17,16 +14,13 @@ class Header extends React.Component {
               <Navbar.Toggle />
               <Navbar.Collapse>
                 <Nav pullRight>
-                  <LinkContainer to="/entree"><NavItem eventKey={1}>Entrees</NavItem></LinkContainer>
-                  <LinkContainer to="/light"><NavItem eventKey={2}>Light Fare</NavItem></LinkContainer>
-                  <LinkContainer to="/dessert"><NavItem eventKey={3}>Dessert</NavItem></LinkContainer>
+                  <LinkContainer to="/entree"><NavItem eventKey={2}>Entrees</NavItem></LinkContainer>
+                  <LinkContainer to="/light"><NavItem eventKey={3}>Light Fare</NavItem></LinkContainer>
+                  <LinkContainer to="/dessert"><NavItem eventKey={4}>Dessert</NavItem></LinkContainer>
                 </Nav>        
               </Navbar.Collapse>
               <div className="clear"></div>
             </Navbar>
-          </Col>
-        </Row>
-      </Grid>  
     )
   }
 }

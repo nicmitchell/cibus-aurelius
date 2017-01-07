@@ -31,7 +31,7 @@ module.exports = [
     side: 'Jasmine rice'
   }, {
     name: 'Sinigang',
-    desc: 'Beef or pork ribs that slide off the bone served ina tamarind and guava based stew with tomatoes, spinach, lettuce, onion',
+    desc: 'Beef or pork ribs that slide off the bone served in a tamarind and guava based stew with tomatoes, spinach, lettuce, onion',
     time: '1 hour',
     image: 'images.jpg',
     options: [

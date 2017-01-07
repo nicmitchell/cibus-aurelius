@@ -1,20 +1,19 @@
 import React from 'react';
+import { Grid, Row } from 'react-bootstrap';
 import MenuItem from './MenuItem';
 
 class Content extends React.Component {
   render() {
     return(
-      <section className="content gallery pad1">
-        <div className="container">
-          <div className="row">
+      <Grid>
+        <Row>
           { 
             this.props.data.map((item, idx) => {
               return <MenuItem { ...item } key={ idx }/>
             })
           }
-          </div>
-        </div>
-      </section>      
+        </Row>
+      </Grid>
     )
   }
 }

@@ -115,21 +115,33 @@ a:hover {
 }
 
 
-/****Gallery****/
+/****Menu Cards****/
 
-.gall_block {
+.menu-card {
     background-color: #f1f0f1;
     margin-bottom: 29px;
+    box-sizing: border-box;
 }
 
-.gall_bot {
-    padding: 28px 21px 30px;
+.menu-card .bottom {
+    padding: 10px 20px;
     background: #f1f0f1;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 180px;
 }
 
-.gall_bot .btn {
+.menu-card .bottom .btn {
     position: relative;
     top: 1px;
+}
+
+.menu-card .prep-time {
+}
+
+.menu-card .options {
+    float: right;
+    display: inline-block;
 }
 
 .nolist {
