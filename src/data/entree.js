@@ -89,7 +89,7 @@ module.exports = [
     side: 'Jasmine rice'
   }, {
     name: 'Lemon Butter Caper Fish',
-    desc: 'Sauteed fish of the day served in a lemon, butter, caper sauce',
+    desc: 'Sauteed fish of the day served in a lemon, butter, caper sauce with shrimp and a side of rice',
     time: '30 minutes',
     image: 'images.jpg',
     side: 'Jasmine rice'
