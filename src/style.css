@@ -128,7 +128,6 @@ a:hover {
     background: #f1f0f1;
     box-sizing: border-box;
     position: relative;
-    min-height: 180px;
 }
 
 .menu-card .bottom .btn {
