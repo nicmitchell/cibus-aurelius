@@ -10,8 +10,8 @@ class Header extends React.Component {
           <Navbar.Brand>
             <LinkContainer to="/"><NavItem eventKey={1}><span>Cibus Aurelius</span></NavItem></LinkContainer>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav pullRight>
             <LinkContainer to="/entree"><NavItem eventKey={2}>Entrees</NavItem></LinkContainer>
@@ -19,7 +19,6 @@ class Header extends React.Component {
             <LinkContainer to="/dessert"><NavItem eventKey={4}>Dessert</NavItem></LinkContainer>
           </Nav>        
         </Navbar.Collapse>
-        <div className="clear"></div>
       </Navbar>
     )
   }

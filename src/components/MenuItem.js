@@ -4,9 +4,10 @@ import { Image, Glyphicon } from 'react-bootstrap';
 
 class MenuItem extends React.Component {
   render() {
+    const img = `/images/${ this.props.image || "no-pic" }-700.jpg`;
     return(
       <div className="menu-card">
-        <Image responsive src={`/images/${ this.props.image || "no-pic.jpg"}`}/>
+        <Image responsive src={ img }/>
         <div className="bottom">
           <h4 className="">{ this.props.name }</h4>
           <p>{ this.props.desc }</p>

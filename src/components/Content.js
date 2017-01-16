@@ -6,41 +6,34 @@ class Content extends React.Component {
   constructor(props){
     super(props);
 
-    let total = props.data.length;
-    let columnLength = parseInt(total / 3, 10);
-    let remainder = total % 3;
-    let column1End = (remainder) ? columnLength + 1 : columnLength;
-    let column2End = ((remainder > 1) ? columnLength + 1 : columnLength) * 2;
- 
-    this.col1 = props.data.slice(0, column1End);
-    this.col2 = props.data.slice(column1End, column2End);
-    this.col3 = props.data.slice(column2End);
+    const total = props.data.length;
+    const columnLength = parseInt(total / 3, 10);
+    const remainder = total % 3;
+    const column1End = (remainder) ? columnLength + 1 : columnLength;
+    const column2End = (columnLength * 2) + remainder;
 
+    const col1 = props.data.slice(0, column1End);
+    const col2 = props.data.slice(column1End, column2End);
+    const col3 = props.data.slice(column2End);
+
+    this.columns = [col1, col2, col3];
   }
   render() {
     return(
       <Grid>
-        <Col md={4}>
           { 
-            this.col1.map((item, idx) => {
-              return <MenuItem { ...item } key={ idx }/>
+            this.columns.map((column, idx) => {
+              return (    
+                <Col md={4} sm={6} xs={12} key={ idx }>
+                  { 
+                    column.map((item, idx) => {
+                      return <MenuItem { ...item } key={ idx }/>
+                    })
+                  }
+                </Col>
+              )
             })
           }
-        </Col>
-        <Col md={4}>
-          { 
-            this.col2.map((item, idx) => {
-              return <MenuItem { ...item } key={ idx }/>
-            })
-          }
-        </Col>
-        <Col md={4}>
-          { 
-            this.col3.map((item, idx) => {
-              return <MenuItem { ...item } key={ idx }/>
-            })
-          }
-        </Col>
       </Grid>
     )
   }

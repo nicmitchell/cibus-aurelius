@@ -71,7 +71,8 @@ module.exports = [
     name: 'Joe\'s Special',
     desc: 'Ground beef or bison sauteed with kale and scrambled egg served with a bed of rice',
     time: '30 minutes',
-    side: 'Jasmine rice'
+    side: 'Jasmine rice',
+    image: 'joe-special'
   }, {
     name: 'Lemon Butter Caper Fish and Shrimp',
     desc: 'Sauteed fish of the day served in a lemon, butter, caper sauce with shrimp and a side of rice',
