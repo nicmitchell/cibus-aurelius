@@ -48,7 +48,7 @@ module.exports = [
     time: '45 minutes'
   }, {
     name: 'Tortellini with Prosciutto and Chicken',
-    desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomoatoes',
+    desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
     time: '45 minutes',
     image: 'chicken-tortellini'
   }, {
