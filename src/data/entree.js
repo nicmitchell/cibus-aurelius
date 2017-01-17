@@ -1,5 +1,16 @@
 module.exports = [
   {
+    name: 'Joe\'s Special',
+    desc: 'Ground beef or bison sauteed with kale and scrambled egg served with a bed of rice',
+    time: '30 minutes',
+    side: 'Jasmine rice',
+    image: 'joe-special'
+  }, {
+    name: 'Tortellini with Prosciutto and Chicken',
+    desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
+    time: '45 minutes',
+    image: 'chicken-tortellini'
+  }, {
     name: 'Roast Orange Honey Chicken',
     desc: 'Chicken things roasted in an orange honey glaze',
     time: '1.5 hours',
@@ -47,11 +58,6 @@ module.exports = [
     desc: 'Refreshing blend of fresh rosemary, basil, and chives tossed in short, thick pasta with tomatoes, balsamic vinegar, and sauteed chicken',
     time: '45 minutes'
   }, {
-    name: 'Tortellini with Prosciutto and Chicken',
-    desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
-    time: '45 minutes',
-    image: 'chicken-tortellini'
-  }, {
     name: 'Burrito Verde',
     desc: 'Chicken burrito slow cooked with onion, fresh tomatillo in a chile verde salsa, filled with avocado, tomato and lettuce',
     time: '45 minutes'
@@ -68,12 +74,6 @@ module.exports = [
     name: 'Fish Taco',
     desc: 'Coming soon',
     time: 'n/a'
-  }, {
-    name: 'Joe\'s Special',
-    desc: 'Ground beef or bison sauteed with kale and scrambled egg served with a bed of rice',
-    time: '30 minutes',
-    side: 'Jasmine rice',
-    image: 'joe-special'
   }, {
     name: 'Lemon Butter Caper Fish and Shrimp',
     desc: 'Sauteed fish of the day served in a lemon, butter, caper sauce with shrimp and a side of rice',
