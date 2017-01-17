@@ -49,7 +49,8 @@ module.exports = [
   }, {
     name: 'Tortellini with Prosciutto and Chicken',
     desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomoatoes',
-    time: '45 minutes'
+    time: '45 minutes',
+    image: 'chicken-tortellini'
   }, {
     name: 'Burrito Verde',
     desc: 'Chicken burrito slow cooked with onion, fresh tomatillo in a chile verde salsa, filled with avocado, tomato and lettuce',
