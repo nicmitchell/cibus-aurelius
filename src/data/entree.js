@@ -6,15 +6,10 @@ module.exports = [
     side: 'Jasmine rice',
     image: 'joe-special'
   }, {
-    name: 'Tortellini with Prosciutto and Chicken',
-    desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
-    time: '45 minutes',
-    image: 'chicken-tortellini'
-  }, {
-    name: 'Roast Orange Honey Chicken',
-    desc: 'Chicken things roasted in an orange honey glaze',
-    time: '1.5 hours',
-    side: 'Mista or house salad'
+    name: 'Chicken Adobo',
+    desc: 'Chicken slow cooked to tenderness in apple cider vinegar and peppercorns',
+    time: '1 hour',
+    side: 'Jasmine rice'
   }, {
     name: 'Chicken Piccata',
     desc: 'Sliced boneless, skinless chicken thighs lightly battered and crisped in a strong lemon caper sauce',
@@ -31,10 +26,20 @@ module.exports = [
     time: '1.5 hours',
     side: 'Mista or house salad'
   }, {
-    name: 'Chicken Adobo',
-    desc: 'Chicken slow cooked to tenderness in apple cider vinegar and peppercorns',
-    time: '1 hour',
-    side: 'Jasmine rice'
+    name: 'Fish Taco',
+    desc: 'Coming soon',
+    time: 'n/a'
+  }, {
+    name: 'Lemon Butter Caper Fish and Shrimp',
+    desc: 'Sauteed fish of the day served in a lemon, butter, caper sauce with shrimp and a side of rice',
+    time: '30 minutes',
+    side: 'Jasmine rice',
+    image: 'lemon-butter-fish'
+  }, {
+    name: 'Roast Orange Honey Chicken',
+    desc: 'Chicken things roasted in an orange honey glaze',
+    time: '1.5 hours',
+    side: 'Mista or house salad'
   }, {
     name: 'Sinigang',
     desc: 'Beef or pork ribs that slide off the bone served in a tamarind and guava based stew with tomatoes, spinach, lettuce, onion',
@@ -58,6 +63,11 @@ module.exports = [
     desc: 'Refreshing blend of fresh rosemary, basil, and chives tossed in short, thick pasta with tomatoes, balsamic vinegar, and sauteed chicken',
     time: '45 minutes'
   }, {
+    name: 'Tortellini with Prosciutto and Chicken',
+    desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
+    time: '45 minutes',
+    image: 'chicken-tortellini'
+  }, {
     name: 'Burrito Verde',
     desc: 'Chicken burrito slow cooked with onion, fresh tomatillo in a chile verde salsa, filled with avocado, tomato and lettuce',
     time: '45 minutes'
@@ -69,15 +79,6 @@ module.exports = [
     name: 'Puerco Pibil',
     desc: 'Pork shoulder slow roasted for hours in an annatto/achiote marinade and served over rice with lots of lime',
     time: '24 hours',
-    side: 'Jasmine rice'
-  }, {
-    name: 'Fish Taco',
-    desc: 'Coming soon',
-    time: 'n/a'
-  }, {
-    name: 'Lemon Butter Caper Fish and Shrimp',
-    desc: 'Sauteed fish of the day served in a lemon, butter, caper sauce with shrimp and a side of rice',
-    time: '30 minutes',
     side: 'Jasmine rice'
   }, {
     name: 'Crispy Catfish with Farro and Grape Relish',
