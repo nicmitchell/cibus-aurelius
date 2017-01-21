@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Col } from 'react-bootstrap';
-import MenuItem from './MenuItem';
+import MenuItemCard from './MenuItemCard';
 
 class Content extends React.Component {
   constructor(props){
@@ -27,7 +27,7 @@ class Content extends React.Component {
                 <Col md={4} sm={6} xs={12} key={ idx }>
                   { 
                     column.map((item, idx) => {
-                      return <MenuItem { ...item } key={ idx }/>
+                      return <MenuItemCard { ...item } key={ idx }/>
                     })
                   }
                 </Col>
