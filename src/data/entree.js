@@ -9,7 +9,8 @@ module.exports = [
     name: 'Chicken Adobo',
     desc: 'Chicken slow cooked to tenderness in apple cider vinegar and peppercorns',
     time: '1 hour',
-    side: 'Jasmine rice'
+    side: 'Jasmine rice',
+    image: 'chicken-adobo'
   }, {
     name: 'Chicken Piccata',
     desc: 'Sliced boneless, skinless chicken thighs lightly battered and crisped in a strong lemon caper sauce',
