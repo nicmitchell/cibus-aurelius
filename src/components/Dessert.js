@@ -1,10 +1,10 @@
 import React from 'react';
-import Content from './Content';
+import MenuItemGrid from './MenuItemGrid';
 import dessert from '../data/dessert.js';
 
 class Dessert extends React.Component {
   render() {
-    return(<Content data={ dessert }/>);
+    return(<MenuItemGrid data={ dessert }/>);
   }
 }
 
