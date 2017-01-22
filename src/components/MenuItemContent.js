@@ -10,10 +10,10 @@ export default class MenuItemContent extends React.Component {
     this.img = `/images/${ this.meal.image || "no-pic" }-1000.jpg`;
   }
   
-  findMeal = (mealType) => {
+  findMeal(mealType) {
     return menu[mealType].find((item) => {
-      return item.name = this.props.params.meal;
-    });
+      return item.name === this.props.params.meal;
+    }, this);
   }
 
   render() {
