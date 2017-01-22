@@ -10,7 +10,7 @@ class MenuItemCard extends React.Component {
 
     return(
       <div className="menu-card">
-        <Link to={ link }><Image responsive src={ img }/></Link>
+        <Link to={ link } data={ this.props }><Image responsive src={ img }/></Link>
         <div className="bottom">
           <Link to={ link }><h4 className="">{ this.props.name }</h4></Link>
           <p>{ this.props.desc }</p>
