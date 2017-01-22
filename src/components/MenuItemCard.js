@@ -8,6 +8,7 @@ export default class MenuItemCard extends React.Component {
     super(props);
     this.state = {};
   }
+  
   componentDidMount() {
     window.setTimeout(() => {
       this.setState({ show: !this.state.show });
