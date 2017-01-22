@@ -29,7 +29,7 @@ export default class MenuItemContent extends React.Component {
             { this.meal.options && <ItemOptions options={ this.meal.options }/> }
             </p>
             <h4>Recipe</h4>
-            <p>recipe ...</p>
+            { this.meal.recipe }
           </div>
         </Col>
       </Grid>
