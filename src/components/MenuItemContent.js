@@ -8,7 +8,7 @@ export default class MenuItemContent extends React.Component {
     
     return(
       <Grid>
-        <Col>
+        <Col className="menu-card">
           <Image responsive src={ img } />
           <div className="bottom">
             <h4 className="">{ this.props.name }</h4>

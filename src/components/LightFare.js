@@ -4,7 +4,7 @@ import lightFare from '../data/light-fare.js';
 
 class LightFare extends React.Component {
   render() {
-    return(<MenuItemGrid data={ lightFare }/>);
+    return(<MenuItemGrid data={ lightFare } mealType="light"/>);
   }
 }
 

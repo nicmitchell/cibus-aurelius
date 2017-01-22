@@ -4,7 +4,7 @@ import dessert from '../data/dessert.js';
 
 class Dessert extends React.Component {
   render() {
-    return(<MenuItemGrid data={ dessert }/>);
+    return(<MenuItemGrid data={ dessert } mealType="dessert"/>);
   }
 }
 
