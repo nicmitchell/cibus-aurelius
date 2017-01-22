@@ -4,192 +4,114 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:600);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:700);
-
-
-@import url(//fonts.googleapis.com/css?family=Dosis);
+/*@import url(//fonts.googleapis.com/css?family=Dosis);*/
 
 html {
-    width: 100%;
-}
-a[href^="tel:"] {
- color: inherit;
- text-decoration: none;
+  width: 100%;
 }
 
 * {
-    -webkit-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 body {
-    position: relative;
-    background-color: #adacac;
-    color: #969696;
-    font: 300 14px/20px 'Open Sans', sans-serif;
-}
-
-.ic {
-	border:0;
-	float:right;
-	background:#fff;
-	color:#f00;
-	width:50%;
-	line-height:10px;
-	font-size:10px;
-	margin:-220% 0 0 0;
-	overflow:hidden;
-	padding:0
+  position: relative;
+  background-color: #adacac;
+  color: #969696;
+  font: 300 14px/20px 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 strong {
-    font-weight: 700;
-}
-
-address {
-    font-style: normal;
+  font-weight: 700;
 }
 
 p {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 input, textarea {
-    border-radius: 0 !important;
-    outline: none !important;
-    -webkit-appearance: none;
+  border-radius: 0 !important;
+  outline: none !important;
+  -webkit-appearance: none;
 }
 
-/****Heads****/
 h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    color: #535151;
-    font-family: 'Economica', sans-serif;
+  font-weight: bold;
+  color: #535151;
+  font-family: 'Economica', sans-serif;
 }
 
-/****Links****/
 a {
-    text-decoration: none;
-    color: inherit;
-    outline: none;
-    transition: 0.5s ease;
-    -o-transition: 0.5s ease;
-    -webkit-transition: 0.5s ease;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
 }
 
 a:hover {
-    color: #aaccaa;
+  color: #aaccaa;
 }
-
-.btn {
-    display: inline-block;
-    border: 1px solid #969696;
-    color: #969696;
-    margin-top: 24px;
-    padding: 5px 32px 11px;
-    font: bold 20px/20px 'Economica', sans-serif;
-}
-
-.btn:hover {
-    color: #fff;
-    border-color: #aaccaa;
-    background-color: #aaccaa;
-}
-
-.link1 {
-    margin-top: 29px;
-    display: block;
-    float: right;
-    color: #fff;
-    background-color: #2e2d2d;
-    font-size: 24px;
-    line-height: 36px;
-    width: 36px;
-    height: 36px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 55px;
-}
-
-.link1:hover {
-    background-color: #aaccaa;
-    color: #fff;
-}
-
 
 /****Menu Cards****/
-
 .menu-card {
-    background-color: #f1f0f1;
-    margin-bottom: 29px;
-    box-sizing: border-box;
+  background-color: #f1f0f1;
+  margin-bottom: 29px;
+  box-sizing: border-box;
+}
+
+.menu-card.content {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .menu-card .bottom {
-    padding: 10px 20px;
-    background: #f1f0f1;
-    box-sizing: border-box;
-    position: relative;
+  padding: 10px 20px;
+  background: #f1f0f1;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .menu-card .bottom .btn {
-    position: relative;
-    top: 1px;
+  position: relative;
+  top: 1px;
 }
 
 .menu-card .prep-time {
 }
 
 .menu-card .options {
-    float: right;
-    display: inline-block;
+  float: right;
+  display: inline-block;
 }
 
 .nolist {
   list-style: none;
 }
 
-/**Footer**/
+.navbar {
+  border-radius: 0;
+}
 
+/**Footer**/
 #footer {
-    display: block;
-    padding: 50px 0 40px;
-    color: #e2e2e2;
-    font-size: 14px;
-    line-height: 18px;
+  display: block;
+  padding: 50px 0 40px;
+  color: #e2e2e2;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .copyright {
-    font-weight: normal;
-    float: left;
+  font-weight: normal;
+  text-align: center;
 }
 
 .copyright div {
-    padding-top: 6px;
+  padding-top: 6px;
 }
 
-.copyright div a:hover {
-    color: #535a5f;
-}
-
-#toTop {
-    display: none;
-    text-decoration: none;
-    position: fixed;
-    bottom: 40px;
-    left: 51%;
-    margin-left: 640px;
-    overflow: hidden;
-    width: 43px;
-    height: 28px;
-    border: none;
-    text-indent: -999px;
-    z-index: 20;
-    background: url(../public/images/totop.png) no-repeat left 0; 
-    transition: 0s ease;
-    -o-transition: 0s ease;
-    -webkit-transition: 0s ease;
-}
-#toTop:hover {
-    outline: none;
-    background-position: right 0;
-}
 

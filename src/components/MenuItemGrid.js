@@ -20,7 +20,6 @@ class MenuItemGrid extends React.Component {
   }
   render = () => {
     const mealType = this.props.mealType;
-    console.log(this.props.params);
     return(
       <Grid>
         <Row>
