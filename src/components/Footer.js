@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-class Footer extends React.Component {
+export default class Footer extends React.Component {
   render() {
    return(
     <footer id="footer">
@@ -18,5 +18,3 @@ class Footer extends React.Component {
    )
   }
 }
-
-export default Footer;

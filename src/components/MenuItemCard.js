@@ -3,7 +3,7 @@ import ItemOptions from './ItemOptions';
 import { Image, Glyphicon, Fade } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-class MenuItemCard extends React.Component {
+export default class MenuItemCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -35,5 +35,3 @@ class MenuItemCard extends React.Component {
     );
   }
 }
-
-export default MenuItemCard;

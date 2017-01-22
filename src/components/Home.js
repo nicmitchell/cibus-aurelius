@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Image, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
  render() {
   return (
     <Grid className="nolist">
@@ -36,5 +36,3 @@ class Home extends React.Component {
   )
  }
 }
-
-export default Home;

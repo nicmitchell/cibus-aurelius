@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   render() {
     return (
       <Navbar inverse collapseOnSelect className="nolist">
@@ -23,5 +23,3 @@ class Header extends React.Component {
     )
   }
 }
-
-export default Header;

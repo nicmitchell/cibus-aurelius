@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ItemOptions extends React.Component {
+export default class ItemOptions extends React.Component {
   render() {
     return (
       <span className="options">
@@ -16,5 +16,3 @@ class ItemOptions extends React.Component {
     )
   }
 }
-
-export default ItemOptions;

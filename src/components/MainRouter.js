@@ -5,7 +5,7 @@ import Home from './Home';
 import MealType from './MealType';
 import MenuItemContent from './MenuItemContent';
 
-class MainRouter extends React.Component {
+export default class MainRouter extends React.Component {
   render() {
     return(
       <Router history={ hashHistory }>
@@ -18,5 +18,3 @@ class MainRouter extends React.Component {
     )
   }
 }
-
-export default MainRouter;

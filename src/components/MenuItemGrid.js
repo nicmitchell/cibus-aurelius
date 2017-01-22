@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import MenuItemCard from './MenuItemCard';
 
-class MenuItemGrid extends React.Component {
+export default class MenuItemGrid extends React.Component {
   constructor(props){
     super(props);
 
@@ -41,5 +41,3 @@ class MenuItemGrid extends React.Component {
     )
   }
 }
-
-export default MenuItemGrid;
