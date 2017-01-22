@@ -30,13 +30,13 @@ export default class MenuItemContent extends React.Component {
           <Col className="menu-card content">
             <Image responsive src={ this.img } />
             <div className="bottom">
-              <h4 className="">{ this.meal.name }</h4>
+              <h2 className="">{ this.meal.name }</h2>
               <p>{ this.meal.desc }</p>
               { this.meal.side && <p>Side: { this.meal.side } </p>}
               <p className="prep-time"><Glyphicon glyph="time"/> { this.meal.time }
               { this.meal.options && <ItemOptions options={ this.meal.options }/> }
               </p>
-              <h4>Recipe</h4>
+              <h3>Recipe</h3>
               { this.meal.recipe }
             </div>
           </Col>
