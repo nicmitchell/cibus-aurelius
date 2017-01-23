@@ -1,26 +1,14 @@
 import React from 'react';
 import ItemOptions from './ItemOptions';
-import { Image, Glyphicon, Fade } from 'react-bootstrap';
+import { Image, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 export default class MenuItemCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  
-  componentDidMount() {
-    window.setTimeout(() => {
-      this.setState({ show: !this.state.show });
-    }, 300);
-  }
-
   render() {
     const img = `/images/${ this.props.image || "no-pic" }-700.jpg`;
     const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.name)}`;
 
     return(
-      <Fade in={ this.state.show }>
         <div className="menu-card">
           <Link to={ link } data={ this.props }><Image responsive src={ img }/></Link>
           <div className="bottom">
@@ -32,7 +20,6 @@ export default class MenuItemCard extends React.Component {
             </p>
           </div>
         </div>
-      </Fade>
     );
   }
 }

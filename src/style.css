@@ -113,3 +113,28 @@ a:hover {
 .copyright div {
   padding-top: 6px;
 }
+
+/**Transitions**/
+.content-appear {
+  transition: all 1s;
+  transform: translateY(4rem);
+  opacity: 0;
+}
+
+.content-appear.content-appear-active {
+  transition: all 1s;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.content-leave {
+  transition: all 1s;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  transition: all 1s;
+  transform: translateY(4rem);
+  opacity: 0;
+}

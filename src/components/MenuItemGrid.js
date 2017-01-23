@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+import Transition from 'react-addons-css-transition-group';
 import MenuItemCard from './MenuItemCard';
 import data from '../data/menu-data';
 
@@ -46,7 +47,19 @@ export default class MenuItemGrid extends React.Component {
                 <Col md={4} sm={6} xs={12} key={ idx }>
                   { 
                     column.map((item, idx) => {
-                      return <MenuItemCard { ...item } key={ idx } mealType={ this.state.mealType }/>
+                      return (      
+                        <Transition key={ idx }
+                          transitionName="content"
+                          transitionAppear={ true }
+                          transitionAppearTimeout={ 1000 }
+                          transitionEnter={ true }
+                          transitionEnterTimeout={ 1000 }
+                          transitionLeaveTimeout={ 1000 }
+                          component="div"
+                        >
+                          <MenuItemCard { ...item } key={ idx } itemKey={ idx } mealType={ this.state.mealType }/>
+                        </Transition>
+                      )
                     })
                   }
                 </Col>

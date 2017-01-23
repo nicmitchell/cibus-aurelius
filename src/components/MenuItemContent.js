@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Col, Image, Glyphicon, Fade } from 'react-bootstrap';
+import { Grid, Col, Image, Glyphicon } from 'react-bootstrap';
+import Transition from 'react-addons-css-transition-group'
 import ItemOptions from './ItemOptions';
 import menu from '../data/menu-data';
 
@@ -25,8 +26,16 @@ export default class MenuItemContent extends React.Component {
 
   render() {
     return(
-      <Fade in={ this.state.show }>
-        <Grid>
+      <Transition key={ this.meal.name }
+        transitionName="content"
+        transitionAppear={ true }
+        transitionAppearTimeout={ 1000 }
+        transitionEnter={ true }
+        transitionEnterTimeout={ 1000 }
+        transitionLeaveTimeout={ 1000 }
+        component="div"
+      >
+        <Grid key={ this.meal.name }>
           <Col className="menu-card content">
             <Image responsive src={ this.img } />
             <div className="bottom">
@@ -41,7 +50,7 @@ export default class MenuItemContent extends React.Component {
             </div>
           </Col>
         </Grid>
-      </Fade>
+      </Transition>
     )
   }
 }
