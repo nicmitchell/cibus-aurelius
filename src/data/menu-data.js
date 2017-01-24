@@ -38,10 +38,10 @@ export default {
       side: 'Jasmine rice',
       image: 'lemon-butter-fish'
     }, {
-      name: 'Roast Orange Honey Chicken',
-      desc: 'Chicken things roasted in an orange honey glaze',
-      time: '1.5 hours',
-      side: 'Mista or house salad'
+      name: 'Pasta Fresca with Chicken',
+      desc: 'Refreshing blend of fresh rosemary, basil, and chives tossed in short, thick pasta with tomatoes, balsamic vinegar, and sauteed chicken',
+      time: '45 minutes',
+      image: 'pasta-fresca'
     }, {
       name: 'Sinigang',
       desc: 'Beef or pork ribs that slide off the bone served in a tamarind and guava based stew with tomatoes, spinach, lettuce, onion',
@@ -61,9 +61,10 @@ export default {
       time: '1 hour',
       side: 'Spicy turnip fries or sweet potato fries'
     }, {
-      name: 'Pasta Fresca with Chicken',
-      desc: 'Refreshing blend of fresh rosemary, basil, and chives tossed in short, thick pasta with tomatoes, balsamic vinegar, and sauteed chicken',
-      time: '45 minutes'
+      name: 'Roast Orange Honey Chicken',
+      desc: 'Chicken things roasted in an orange honey glaze',
+      time: '1.5 hours',
+      side: 'Mista or house salad'
     }, {
       name: 'Tortellini with Prosciutto and Chicken',
       desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
@@ -72,7 +73,8 @@ export default {
     }, {
       name: 'Burrito Verde',
       desc: 'Chicken burrito slow cooked with onion, fresh tomatillo in a chile verde salsa, filled with avocado, tomato and lettuce',
-      time: '45 minutes'
+      time: '45 minutes',
+      image: 'burrito-verde'
     }, {
       name: 'Taco Rojo',
       desc: 'Ground beef served in a traditional taco seasoning, topped with tomatoes, avocado, shredded cheese, and lettuce',
