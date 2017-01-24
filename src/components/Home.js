@@ -11,7 +11,7 @@ export default class Home extends React.Component {
           <LinkContainer to="/entree">
             <NavItem eventKey={1}>
               <h1>Entrees</h1>
-              <Image responsive src="/images/home-entree.jpg"/>
+              <Image responsive src="/images/joe-special-700.jpg"/>
             </NavItem>
           </LinkContainer>
         </Col>
@@ -19,7 +19,7 @@ export default class Home extends React.Component {
           <LinkContainer to="/light">
             <NavItem eventKey={2}>
               <h1>Light Fare</h1>
-              <Image responsive src="/images/home-light.jpg"/>
+              <Image responsive src="/images/fresh-froot-700.jpg"/>
             </NavItem>
           </LinkContainer>
         </Col>
