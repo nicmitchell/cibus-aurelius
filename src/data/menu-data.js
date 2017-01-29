@@ -144,7 +144,7 @@ export default {
       time: '1 hour'
     }, {
       name: 'Warm Creme Brulee',
-      desc: 'Classic custard-like dessert with vanilla bean flavor and carmelized sugar. Served warm, as the only way it should be',
+      desc: 'Classic custard-like dessert with vanilla bean flavor and carmelized sugar. Served warm ... the only way it should be',
       time: '1.5 hours'
     }, {
       name: 'Grape Spiced Tartlet with Goat Cheese',
@@ -153,7 +153,8 @@ export default {
     }, {
       name: 'Mint Mountain',
       desc: 'Chocolate chip cookies topped with Andes mints served with Talenti mint chip gelato',
-      time: '20 minutes'
+      time: '20 minutes',
+      image: 'mint-mountain'
     }, {
       name: 'Sweet Sticky Rice Bar',
       desc: 'Sweet sticky jasmine rice filled with macapuno steamed in a banana leaf',
