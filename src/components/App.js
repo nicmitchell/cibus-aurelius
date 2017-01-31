@@ -7,7 +7,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-          { this.props.children }
+          {React.cloneElement({...this.props}.children, {...this.props})}
         <Footer />
       </div>
     );

@@ -3,7 +3,7 @@ import ItemOptions from './ItemOptions';
 import { Image, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-export default class MenuItemCard extends React.Component {
+export default class ItemCard extends React.Component {
   render() {
     const img = `/images/${ this.props.image || "no-pic" }-700.jpg`;
     const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.name)}`;

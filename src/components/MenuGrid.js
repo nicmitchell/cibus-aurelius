@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Transition from 'react-addons-css-transition-group';
-import MenuItemCard from './MenuItemCard';
+import ItemCard from './ItemCard';
 import data from '../data/menu-data';
 
-export default class MenuItemGrid extends React.Component {
+export default class MenuGrid extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -57,7 +57,7 @@ export default class MenuItemGrid extends React.Component {
                           transitionLeaveTimeout={ 1000 }
                           component="div"
                         >
-                          <MenuItemCard { ...item } key={ idx } itemKey={ idx } mealType={ this.state.mealType }/>
+                          <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ this.state.mealType }/>
                         </Transition>
                       )
                     })

@@ -4,7 +4,7 @@ import Transition from 'react-addons-css-transition-group'
 import ItemOptions from './ItemOptions';
 import menu from '../data/menu-data';
 
-export default class MenuItemContent extends React.Component {
+export default class SingleItem extends React.Component {
   constructor(props) {
     super(props);
     this.meal = this.findMeal(this.props.params.mealType);
