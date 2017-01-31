@@ -27,7 +27,7 @@ export default class Home extends React.Component {
           <LinkContainer to="/dessert">
             <NavItem eventKey={3}>
               <h1>Desserts</h1>
-              <Image responsive src="/images/home-dessert.jpg"/>
+              <Image responsive src="/images/mint-mountain-700.jpg"/>
             </NavItem>
           </LinkContainer>
         </Col>
