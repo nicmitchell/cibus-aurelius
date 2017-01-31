@@ -17,6 +17,7 @@ html {
 body {
   position: relative;
   background-color: #adacac;
+  background-image: url('/images/honey_im_subtle.png');
   color: #969696;
   font: 300 14px/20px 'Open Sans', sans-serif;
   margin: 0;
