@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
         <Row>
           <Col md={12}>
             <div className="copyright">
-              <span id="copyright-year">&copy; { new Date().getFullYear() } Mind Riot</span>
+              <span className="copyright-year">&copy; { new Date().getFullYear() } Mind Riot</span>
             </div>
           </Col>
         </Row>

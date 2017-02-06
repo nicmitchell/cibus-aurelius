@@ -115,6 +115,11 @@ a:hover {
   padding-top: 6px;
 }
 
+.copyright-year {
+  padding: 2rem;
+  background-color: #000;
+}
+
 /**Transitions**/
 .content-appear {
   transition: all 1s;
