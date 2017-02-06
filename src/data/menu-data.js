@@ -57,7 +57,8 @@ export default {
     }, {
       name: 'Roasted Squash with Chicken and Quinoa',
       desc: 'Delicata squash roasted and filled with chicken, quinoa, currants and sage',
-      time: '1 hour'
+      time: '1 hour',
+      image: 'squash-quinoa'
     }, {
       name: 'Avocada Tempura and Chicken',
       desc: 'Sauteed chicken topped with avocado lightly fried in tempura',
