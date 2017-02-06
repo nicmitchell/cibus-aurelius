@@ -19,19 +19,20 @@ export default {
       side: 'Currant ginger cous cous',
       image: 'roast-chicken-apple'
     }, {
-      name: 'Savory Roast Chicken ',
-      desc: 'Chicken things roasted in a traditional poultry spice blend of thyme, rosemary, and sage',
-      time: '1.5 hours',
-      side: 'Mista or house salad'
+      name: 'Fish Taco',
+      desc: 'Baja style fried white fish with shredded cabbage, guacamole, lime cream, and fresh salsa',
+      time: '45 minutes',
+      image: 'fish-taco'
     }, {
       name: 'Chicken Piccata',
       desc: 'Sliced boneless, skinless chicken thighs lightly battered and crisped in a strong lemon caper sauce',
       time: '45 minutes',
       side: 'Mista or house salad'
     }, {
-      name: 'Fish Taco',
-      desc: 'Coming soon',
-      time: 'n/a'
+      name: 'Savory Roast Chicken ',
+      desc: 'Chicken things roasted in a traditional poultry spice blend of thyme, rosemary, and sage',
+      time: '1.5 hours',
+      side: 'Mista or house salad'
     }, {
       name: 'Lemon Butter Caper Fish and Shrimp',
       desc: 'Sauteed fish of the day served in a lemon, butter, caper sauce with shrimp and a side of rice',

@@ -139,3 +139,9 @@ a:hover {
   transform: translateY(4rem);
   opacity: 0;
 }
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .col-xs-12 {
+    width: 50%;
+  }
+}
