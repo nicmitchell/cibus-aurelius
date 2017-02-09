@@ -1,4 +1,4 @@
-export default {
+const menu = {
   entree: [
     {
       name: 'Joe\'s Special',
@@ -167,3 +167,5 @@ export default {
     }
   ]
 };
+
+export default menu;
