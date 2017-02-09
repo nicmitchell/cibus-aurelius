@@ -6,12 +6,15 @@
     "react-scripts": "0.8.4"
   },
   "dependencies": {
+    "re-base": "^2.5.2",
     "react": "^15.4.1",
     "react-addons-css-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
+    "react-redux": "^5.0.2",
     "react-router": "^3.0.0",
-    "react-router-bootstrap": "^0.23.1"
+    "react-router-bootstrap": "^0.23.1",
+    "shortid": "^2.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
