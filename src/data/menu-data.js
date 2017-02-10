@@ -19,10 +19,10 @@ const menu = {
       side: 'Currant ginger cous cous',
       image: 'roast-chicken-apple'
     }, {
-      name: 'Fish Taco',
-      desc: 'Baja style fried white fish with shredded cabbage, guacamole, lime cream, and fresh salsa',
+      name: 'Tortellini with Prosciutto and Chicken',
+      desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
       time: '45 minutes',
-      image: 'fish-taco'
+      image: 'chicken-tortellini'
     }, {
       name: 'Chicken Piccata',
       desc: 'Sliced boneless, skinless chicken thighs lightly battered and crisped in a strong lemon caper sauce',
@@ -60,24 +60,14 @@ const menu = {
       time: '1 hour',
       image: 'squash-quinoa'
     }, {
-      name: 'Avocada Tempura and Chicken',
-      desc: 'Sauteed chicken topped with avocado lightly fried in tempura',
-      time: '1 hour',
-      side: 'Spicy turnip fries or sweet potato fries'
-    }, {
       name: 'Taco Rojo',
       desc: 'Ground beef served in a traditional taco seasoning, topped with tomatoes, avocado, shredded cheese, and lettuce',
       time: '30 minutes'
     }, {
-      name: 'Tortellini with Prosciutto and Chicken',
-      desc: 'Horseshoe shaped tortellini pasta tossed with prosciutto, chicken, salami, parsley, rosemary, tomatoes',
-      time: '45 minutes',
-      image: 'chicken-tortellini'
-    }, {
-      name: 'Burrito Verde',
-      desc: 'Chicken burrito slow cooked with onion, fresh tomatillo in a chile verde salsa, filled with avocado, tomato and lettuce',
-      time: '45 minutes',
-      image: 'burrito-verde'
+      name: 'Avocada Tempura and Chicken',
+      desc: 'Sauteed chicken topped with avocado lightly fried in tempura',
+      time: '1 hour',
+      side: 'Spicy turnip fries or sweet potato fries'
     }, {
       name: 'Roast Orange Honey Chicken',
       desc: 'Chicken things roasted in an orange honey glaze',
@@ -88,7 +78,18 @@ const menu = {
       name: 'Puerco Pibil',
       desc: 'Pork shoulder slow roasted for hours in an annatto/achiote marinade and served over rice with lots of lime',
       time: '24 hours',
-      side: 'Jasmine rice'
+      side: 'Jasmine rice',
+      image: 'puerco-pibil'
+    }, {
+      name: 'Fish Taco',
+      desc: 'Baja style fried white fish with shredded cabbage, guacamole, lime cream, and fresh salsa',
+      time: '45 minutes',
+      image: 'fish-taco'
+    }, {
+      name: 'Burrito Verde',
+      desc: 'Chicken burrito slow cooked with onion, fresh tomatillo in a chile verde salsa, filled with avocado, tomato and lettuce',
+      time: '45 minutes',
+      image: 'burrito-verde'
     }, {
       name: 'Crispy Catfish with Farro and Grape Relish',
       desc: 'Catfish lightly battered served with a warm kale farro salad and topped with warm concord grape relish',
@@ -120,7 +121,7 @@ const menu = {
       ]
     }, {
       name: 'Chocolate Froot Schmoo',
-      desc: 'Frozen berries & kale blended with delicious chocolate protein in soy milk',
+      desc: 'Frozen berries & kale blended with luscious chocolate protein in soy milk',
       time: '5 min',
       image: 'froot-schmoo'
     }, {
@@ -149,6 +150,11 @@ const menu = {
       desc: 'Breaded and fried Cream of Wheat squares with a splash of orange, cinnamon, & cardamom',
       time: '4 hours'
     }, {
+      name: 'Sweet Sticky Rice Bar (Biko Malagkit)',
+      desc: 'Sweet sticky rice filled with macapuno steamed in a banana leaf',
+      time: '24 hours',
+      image: 'biko-malagkit'
+    }, {
       name: 'Ginataan',
       desc: 'Warm coconut milk & coconut cream base overflowing with taro, ube, jackfruit, macapuno, and tapioca pearls',
       time: '1 hour'
@@ -160,10 +166,6 @@ const menu = {
       name: 'Grape Spiced Tartlet with Goat Cheese',
       desc: 'Muscadine grapes cooked in sugar and spices balanced with goat cheese served in flaky crust',
       time: '1 hour'
-    }, {
-      name: 'Sweet Sticky Rice Bar',
-      desc: 'Sweet sticky jasmine rice filled with macapuno steamed in a banana leaf',
-      time: '24 hours'
     }
   ]
 };
