@@ -37,7 +37,7 @@ export default class SingleItem extends React.Component {
       >
         <Grid key={ this.meal.name }>
           <Col className="menu-card content">
-            <Image responsive src={ this.img } />
+            { this.meal.image && <Image responsive src={ this.img } /> }
             <div className="bottom">
               <h2 className="">{ this.meal.name }</h2>
               <p>{ this.meal.desc }</p>

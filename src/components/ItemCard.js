@@ -5,12 +5,12 @@ import { Link } from 'react-router';
 
 export default class ItemCard extends React.Component {
   render() {
-    const img = `/images/${ this.props.image || "no-pic" }-700.jpg`;
+    const img = `/images/${ this.props.image }-700.jpg`;
     const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.name)}`;
 
     return(
         <div className="menu-card">
-          <Link to={ link } data={ this.props }><Image responsive src={ img }/></Link>
+          { this.props.image && <Link to={ link } data={ this.props }><Image responsive src={ img }/></Link> }
           <div className="bottom">
             <Link to={ link }><h4 className="">{ this.props.name }</h4></Link>
             <p>{ this.props.desc }</p>
