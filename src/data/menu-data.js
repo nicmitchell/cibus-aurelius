@@ -1,4 +1,5 @@
-const menu = {
+// const menu = {
+module.exports = {
   entree: [
     {
       name: 'Joe\'s Special',
@@ -27,7 +28,8 @@ const menu = {
       name: 'Chicken Piccata',
       desc: 'Sliced boneless, skinless chicken thighs lightly battered and crisped in a strong lemon caper sauce',
       time: '45 minutes',
-      side: 'Mista or house salad'
+      side: 'Mista or house salad',
+      image: 'chicken-piccata'
     }, {
       name: 'Savory Roast Chicken ',
       desc: 'Chicken things roasted in a traditional poultry spice blend of thyme, rosemary, and sage',
@@ -146,10 +148,6 @@ const menu = {
       time: '20 minutes',
       image: 'mint-mountain'
     }, {
-      name: 'Fried Cream',
-      desc: 'Breaded and fried Cream of Wheat squares with a splash of orange, cinnamon, & cardamom',
-      time: '4 hours'
-    }, {
       name: 'Sweet Sticky Rice Bar (Biko Malagkit)',
       desc: 'Sweet sticky rice filled with macapuno steamed in a banana leaf',
       time: '24 hours',
@@ -161,13 +159,23 @@ const menu = {
     }, {
       name: 'Warm Creme Brulee',
       desc: 'Classic custard-like dessert with vanilla bean flavor and carmelized sugar. Served warm ... the only way it should be',
-      time: '1.5 hours'
+      time: '1.5 hours',
+      image: 'creme-brulee'
     }, {
       name: 'Grape Spiced Tartlet with Goat Cheese',
       desc: 'Muscadine grapes cooked in sugar and spices balanced with goat cheese served in flaky crust',
       time: '1 hour'
+    }, {
+      name: 'Taro Pastry',
+      desc: 'Pie crust filled with sweet baby taro and ube (purple yam)',
+      time: '1 hour',
+      image: 'taro-pastry'
+    }, {
+      name: 'Fried Cream',
+      desc: 'Breaded and fried Cream of Wheat squares with a splash of orange, cinnamon, & cardamom',
+      time: '4 hours'
     }
   ]
 };
 
-export default menu;
+// export default menu;
