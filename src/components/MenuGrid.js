@@ -4,28 +4,6 @@ import Transition from 'react-addons-css-transition-group';
 import ItemCard from './ItemCard';
 
 export default class MenuGrid extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     mealType: '',
-  //     columns: [],
-  //     items: []
-  //   };
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   const nextMealType = nextProps.params.mealType;
-  //   const currentMealType = this.state.mealType;
-
-  //   if (nextMealType !== currentMealType) {
-  //     this.setState({ 
-  //       mealType: nextMealType,
-  //       columns: this.getColumns(nextProps.menu[nextMealType]),
-  //       items: nextProps.menu[nextMealType]
-  //     });
-  //   }
-  // }
-
   getColumns = (items = []) => {
     const total = items.length;
     const columnLength = parseInt(total / 3, 10);
