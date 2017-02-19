@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 export default class App extends Component {
   componentDidMount() {
-    this.props.fetchFromFirebase();
+    this.props.fetchAllFromFirebase();
   }
 
   render() {

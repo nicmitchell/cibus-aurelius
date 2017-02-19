@@ -26,8 +26,7 @@ export function updateMenuItem(values) { // { id, key, value }
   }
 }
 
-export function fetchFromFirebase(ref) {
-  ref = ref || '/';
+export function fetchAllFromFirebase(ref='/') {
   return (dispatch) => {
     return database.ref(ref).once('value', (snapshot) => {
       const val = snapshot.val();
@@ -41,7 +40,6 @@ export function fetchFromFirebase(ref) {
 }
 
 export function getFirebaseValuesSuccess(values) {
-  console.log('fb', values);
   return {
     type: 'GET_FIREBASE_VALUES_SUCCESS',
     values
