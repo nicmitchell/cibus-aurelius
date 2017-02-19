@@ -4,29 +4,29 @@ import Transition from 'react-addons-css-transition-group';
 import ItemCard from './ItemCard';
 
 export default class MenuGrid extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      mealType: '',
-      columns: [],
-      items: []
-    };
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     mealType: '',
+  //     columns: [],
+  //     items: []
+  //   };
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    const nextMealType = nextProps.params.mealType;
-    const currentMealType = this.state.mealType;
+  // componentWillReceiveProps(nextProps) {
+  //   const nextMealType = nextProps.params.mealType;
+  //   const currentMealType = this.state.mealType;
 
-    if (nextMealType !== currentMealType) {
-      this.setState({ 
-        mealType: nextMealType,
-        columns: this.getColumns(nextProps.menu[nextMealType]),
-        items: nextProps.menu[nextMealType]
-      });
-    }
-  }
+  //   if (nextMealType !== currentMealType) {
+  //     this.setState({ 
+  //       mealType: nextMealType,
+  //       columns: this.getColumns(nextProps.menu[nextMealType]),
+  //       items: nextProps.menu[nextMealType]
+  //     });
+  //   }
+  // }
 
-  getColumns = (items) => {
+  getColumns = (items = []) => {
     const total = items.length;
     const columnLength = parseInt(total / 3, 10);
     const remainder = total % 3;
@@ -41,11 +41,12 @@ export default class MenuGrid extends React.Component {
   }
 
   render = () => {
+    const mealType = this.props.params.mealType;
     return(
-      <Grid key={ this.state.mealType }>
+      <Grid>
         <Row>
           { 
-            this.state.columns.map((column, idx) => {
+            this.getColumns(this.props.menu[mealType]).map((column, idx) => {
               return (    
                 <Col md={4} sm={6} xs={12} key={ idx }>
                   { 
@@ -60,7 +61,7 @@ export default class MenuGrid extends React.Component {
                           transitionLeaveTimeout={ 1000 }
                           component="div"
                         >
-                          <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ this.state.mealType }/>
+                          <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ mealType }/>
                         </Transition>
                       )
                     })
