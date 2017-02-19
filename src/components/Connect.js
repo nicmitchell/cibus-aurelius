@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import App from './App';
 
-function mapStateToProps({ menu, newAccount }) {
+function mapStateToProps({ menu }) {
   return {
     menu
   };

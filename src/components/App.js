@@ -3,6 +3,10 @@ import Header from './Header';
 import Footer from './Footer';
 
 export default class App extends Component {
+  componentDidMount() {
+    this.props.fetchFromFirebase();
+  }
+
   render() {
     return (
       <div>
