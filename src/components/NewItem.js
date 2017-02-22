@@ -56,15 +56,15 @@ export default class NewItem extends Component {
           <Col xs={ 8 } xsOffset={ 2 }>
           <h2>Add New Menu Item</h2>
           <Form onSubmit={ (e) => this.addNew(e) }>
-            <FieldGroup { ...fields.addNewName } onChange={ this.handleChange } />
-            <FieldGroup { ...fields.addNewDescription } onChange={ this.handleChange } />
-            <FieldGroup { ...fields.addNewType } onChange={ this.handleChange } value={ this.state.addNewType } />
-            <FieldGroup { ...fields.addNewTime } onChange={ this.handleChange } />
-            <FieldGroup { ...fields.addNewImage } />
+            <FieldGroup inputProps={ fields.addNewName } handleChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.addNewDescription } handleChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.addNewType } handleChange={ this.handleChange } value={ this.state.addNewType } />
+            <FieldGroup inputProps={ fields.addNewTime } handleChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.addNewImage } />
             <hr />
             <h3>Optional</h3>
-            <FieldGroup { ...fields.addNewSide } onChange={ this.handleChange }/>
-            <FieldGroup { ...fields.addNewRecipe } onChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.addNewSide } handleChange={ this.handleChange }/>
+            <FieldGroup inputProps={ fields.addNewRecipe } handleChange={ this.handleChange } />
             <Col smOffset={ 4 } sm={ 4 }>
               <Button type="submit" disabled={ this.state.isDisabled } block >Add</Button>
             </Col>

@@ -10,7 +10,7 @@ export default class FieldGroup extends Component {
   }
 
   setValidationState = (input) => {
-    if (input.type === 'text' && this.props.required) {
+    if (input.type === 'text' && this.props.inputProps.required) {
       this.setState({
         isValid: (!input.value.length) ? 'error' : 'success'
       });
@@ -28,48 +28,31 @@ export default class FieldGroup extends Component {
 
   handleChange = (e) => {
     this.setValidationState(e.target);
-    this.props.onChange(e);
+    this.props.handleChange(e);
   }
 
   render() {
-    const name = this.props.name;
-    const label = this.props.label;
-    const props = this.props;
-
-    const SelectGroup = ({ name, options, ...props }) => {
-      return (
-        <FormControl 
-          inputRef={ (input) => this[name] = input } 
-          onBlur={ props.handleBlur } 
-          onChange={ props.handleChange }
-          { ...props }
-        >
-        { 
-          Object.keys(options).map((option) => (<option key={ option } value={ option }>{options[option]}</option>))
-        }
-        </FormControl>
-      )
-    }
+    const props = Object.assign({}, this.props.inputProps);
+    const options = Object.assign({}, props.options);
+    props.onChange = this.handleChange;
+    props.onBlur = this.handleBlur;
+    props.value = this.props.value;
+    delete props.options;
 
     return (
-      <FormGroup controlId={ name } validationState={ this.state.isValid }>
-        <ControlLabel>{ label } </ControlLabel>
+      <FormGroup controlId={ props.name } validationState={ this.state.isValid }>
+        <ControlLabel>{ props.label } </ControlLabel>
         { 
           (props.type === 'text' || props.type === 'file' || props.componentClass === 'textarea') &&
-            <FormControl 
-              inputRef={ (input) => this[name] = input } 
-              onChange={ this.handleChange } 
-              onBlur={ this.handleBlur }
-              { ...props } 
-            />
+            <FormControl inputRef={ (input) => this[props.name] = input } { ...props } />
         }
         { 
           props.componentClass === 'select' && 
-            <SelectGroup 
-              onChange={ this.handleChange } 
-              onBlur={ this.handleBlur }
-              { ...props } 
-            /> 
+            <FormControl inputRef={ (input) => this[props.name] = input } { ...props }>
+              { 
+                Object.keys(options).map((option) => <option key={ option } value={ option }>{options[option]}</option>)
+              }
+            </FormControl>
         }
       </FormGroup>
     )
