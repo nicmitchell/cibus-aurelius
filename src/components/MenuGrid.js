@@ -28,21 +28,7 @@ export default class MenuGrid extends React.Component {
               return (    
                 <Col md={4} sm={6} xs={12} key={ idx }>
                   { 
-                    column.map((item, idx) => {
-                      return (      
-                        <Transition key={ idx }
-                          transitionName="content"
-                          transitionAppear={ true }
-                          transitionAppearTimeout={ 1000 }
-                          transitionEnter={ true }
-                          transitionEnterTimeout={ 1000 }
-                          transitionLeaveTimeout={ 1000 }
-                          component="div"
-                        >
-                          <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ mealType }/>
-                        </Transition>
-                      )
-                    })
+                    column.map((item, idx) => <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ mealType } />)
                   }
                 </Col>
               )
