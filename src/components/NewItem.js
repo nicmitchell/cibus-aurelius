@@ -64,7 +64,7 @@ export default class NewItem extends Component {
             <hr />
             <h3>Optional</h3>
             <FieldGroup { ...fields.addNewSide } onChange={ this.handleChange }/>
-            <FieldGroup { ...fields.addNewSide } onChange={ this.handleChange } />
+            <FieldGroup { ...fields.addNewRecipe } onChange={ this.handleChange } />
             <Col smOffset={ 4 } sm={ 4 }>
               <Button type="submit" disabled={ this.state.isDisabled } block >Add</Button>
             </Col>

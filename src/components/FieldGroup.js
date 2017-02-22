@@ -55,7 +55,7 @@ export default class FieldGroup extends Component {
       <FormGroup controlId={ name } validationState={ this.state.isValid }>
         <ControlLabel>{ label } </ControlLabel>
         { 
-          (props.type === 'text' || props.type === 'file') &&
+          (props.type === 'text' || props.type === 'file' || props.componentClass === 'textarea') &&
             <FormControl 
               inputRef={ (input) => this[name] = input } 
               onChange={ this.handleChange } 
