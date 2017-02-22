@@ -54,12 +54,14 @@ export default class NewItem extends Component {
       <Grid>
         <Row>
           <Col xs={ 8 } xsOffset={ 2 }>
+          <h2>Add New Menu Item</h2>
           <Form onSubmit={ (e) => this.addNew(e) }>
             <FieldGroup { ...fields.addNewName } onChange={ this.handleChange } />
             <FieldGroup { ...fields.addNewDescription } onChange={ this.handleChange } />
             <FieldGroup { ...fields.addNewType } onChange={ this.handleChange } value={ this.state.addNewType } />
             <FieldGroup { ...fields.addNewTime } onChange={ this.handleChange } />
             <FieldGroup { ...fields.addNewImage } />
+            <hr />
             <h3>Optional</h3>
             <FieldGroup { ...fields.addNewSide } onChange={ this.handleChange }/>
             <FieldGroup { ...fields.addNewSide } onChange={ this.handleChange } />
