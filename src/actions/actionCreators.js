@@ -1,4 +1,4 @@
-import database from '../database';
+import { database } from '../firebase';
 
 export function addNewMenuItem(item) {
   return { 

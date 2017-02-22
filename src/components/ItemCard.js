@@ -1,9 +1,8 @@
 import React from 'react';
 import ItemOptions from './ItemOptions';
-import { Image, Glyphicon } from 'react-bootstrap';
+import { Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 import Transition from 'react-addons-css-transition-group';
-import { storage } from '../firebase';
 import firebaseConfig from '../firebaseConfig';
 
 export default class ItemCard extends React.Component {
@@ -46,9 +45,10 @@ export default class ItemCard extends React.Component {
               <img 
                 ref={ (image) => this.image = image } 
                 src={ img } 
-                className={ `img-responsive` }
+                className="img-responsive"
                 width="100%" 
                 onLoad={ (e) => this.imageLoaded(e) }
+                role="presentation"
               />
             </div>
           </Link> 

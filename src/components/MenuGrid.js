@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import Transition from 'react-addons-css-transition-group';
 import ItemCard from './ItemCard';
 
 export default class MenuGrid extends React.Component {

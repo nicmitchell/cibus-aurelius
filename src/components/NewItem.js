@@ -1,49 +1,55 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Grid, Row, Col, Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import shortid from 'shortid';
+import { storage } from '../firebase';
 
 export default class NewItem extends Component {
+  constructor(props) {
+    super(props);
+    this.storageRef = storage.ref('/images');
+  }
 
   addNew = (e) => {
     e.preventDefault();
     const item = {
       id: shortid.generate(),
-      name: ReactDOM.findDOMNode(this.addNewName).value,
-      desc: ReactDOM.findDOMNode(this.addNewDescription).value,
-      time: ReactDOM.findDOMNode(this.addNewTime).value,
-      side: ReactDOM.findDOMNode(this.addNewSide).value,
-      image: ReactDOM.findDOMNode(this.addNewImage).value, // fake path
-      recipe: ReactDOM.findDOMNode(this.addNewRecipe).value
+      name: this.addNewName.value,
+      desc: this.addNewDescription.value,
+      time: this.addNewTime.value,
+      side: this.addNewSide.value,
+      image: this.addNewImage.files[0],
+      recipe: this.addNewRecipe.value,
     }
 
-    // send to Firebase
     console.log(item);
+    let file = item.image;
+    // send to Firebase
     this.props.addNewMenuItem(item);
+    this.storageRef.child('/test/test.jpg').put(file, { contentType: 'image/jpeg' });
   }
 
   handleChange = (e) => {
-    e.target.id
+    // e.target.id
   }
 
   render = () => {
-    const FieldGroup = ({ id, label, ...props }) => {
+    const FieldGroup = ({ name, label, ...props }) => {
       return (
-        <FormGroup controlId={ id }>
+        <FormGroup controlId={ name }>
           <Col sm={ 1 }>
             <ControlLabel>{ label }</ControlLabel>
           </Col>
           <Col sm={ 11 }>
-            { props.componentClass !== 'select' && <FormControl { ...props } ref={ (input) => this[id] = input }/> }
-            { props.componentClass === 'select' && <SelectGroup id={ id } options={ props.options }/> }
+            { props.componentClass !== 'select' && <FormControl { ...props } inputRef={ (input) => this[name] = input }/> }
+            { props.componentClass === 'select' && <SelectGroup name={ name } options={ props.options }/> }
           </Col>
         </FormGroup>
       )
     }
 
-    const SelectGroup = ({ id, options } ) => {
+    const SelectGroup = ({ name, options } ) => {
       return (
-        <FormControl componentClass="select" placeholder="entree" ref={ (input) => this[id] = input }>
+        <FormControl componentClass="select" placeholder="entree" inputRef={ (input) => this[name] = input }>
           { 
             Object.keys(options).map((option) => (<option key={ option } value={ option }>{options[option]}</option>))
           }
