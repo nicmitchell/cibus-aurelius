@@ -3,7 +3,8 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import ItemCard from './ItemCard';
 
 export default class MenuGrid extends React.Component {
-  getColumns = (items = []) => {
+  getColumns = (items) => {
+
     const total = items.length;
     const columnLength = parseInt(total / 3, 10);
     const remainder = total % 3;
@@ -19,11 +20,15 @@ export default class MenuGrid extends React.Component {
 
   render = () => {
     const mealType = this.props.params.mealType;
+    const menuItems = this.props.menu[mealType] || {};
+    const menuItemsArray = Object.keys(menuItems).map(key =>  menuItems[key]);
+    const columns = this.getColumns(menuItemsArray);
+
     return(
       <Grid>
         <Row>
           { 
-            this.getColumns(this.props.menu[mealType]).map((column, idx) => {
+            columns.map((column, idx) => {
               return (    
                 <Col md={4} sm={6} xs={12} key={ idx }>
                   { 

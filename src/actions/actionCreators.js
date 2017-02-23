@@ -1,9 +1,17 @@
-import { database } from '../firebase';
+import { database, storage } from '../firebase';
+const databaseRef = database.ref('/');
+const storageRef = storage.ref('/images');
 
-export function addNewMenuItem(item) {
-  return { 
-    type: 'ADD_NEW_MENU_ITEM',
-    value: item
+export function addNewItemToFirebase(data, image) {
+  return(dispatch) => {
+    storageRef.child(`/images/${ data.slug }.jpg`).put(image, { contentType: 'image/jpeg' });
+    return databaseRef.child(data.type).push(data)
+      .then((ref) => {
+        dispatch(addNewMenuItem(ref.getKey(), data));
+      })
+      .catch((error) => {
+        dispatch(pushFirebaseError(error));
+      });
   }
 }
 
@@ -22,6 +30,15 @@ export function deleteMenuItem(values) {
 export function updateMenuItem(values) { // { id, key, value }
   return { 
     type: 'UPDATE_MENU_ITEM',
+    values
+  }
+}
+
+export function addNewMenuItem(key, values) {
+  console.log('adding new menu item', key, values);
+  return { 
+    type: 'ADD_NEW_MENU_ITEM',
+    key: key,
     values
   }
 }
@@ -50,5 +67,19 @@ export function getFirebaseValuesError(values) {
   return {
     type: 'GET_FIREBASE_VALUES_ERROR',
     values
+  }
+}
+
+export function pushFirebaseSuccess(result) {
+  return {
+    type: 'PUSH_FIREBASE_SUCCESS',
+    values: result
+  }
+}
+
+export function pushFirebaseError(error) {
+  return {
+    type: 'PUSH_FIREBASE_ERROR',
+    values: error
   }
 }
