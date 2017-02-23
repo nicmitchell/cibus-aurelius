@@ -27,7 +27,7 @@ export default class ItemCard extends React.Component {
 
   render() {
     const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.name)}`;
-    const img = (this.props.image) ? `${firebaseConfig.imgBaseURL}${ this.props.image }-700.jpg?alt=media` : null;
+    const img = (this.props.image) ? `${ firebaseConfig.menuImgBaseURL }${ this.props.image }-700.jpg?alt=media` : null;
 
     return(
       <Transition 

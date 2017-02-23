@@ -4,7 +4,7 @@ const storageRef = storage.ref('/images');
 
 export function addNewItemToFirebase(data, image) {
   return(dispatch) => {
-    storageRef.child(`/images/${ data.slug }.jpg`).put(image, { contentType: 'image/jpeg' });
+    storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: 'image/jpeg' });
     return databaseRef.child(data.type).push(data)
       .then((ref) => {
         dispatch(addNewMenuItem(ref.getKey(), data));

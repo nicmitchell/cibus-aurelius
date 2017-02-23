@@ -6,7 +6,7 @@ module.exports = {
       desc: 'Ground beef or bison sauteed with kale and scrambled egg served with a bed of rice',
       time: '30 minutes',
       side: 'Jasmine rice',
-      image: 'joe-special'
+      image: 'joes-special'
     }, {
       name: 'Chicken Adobo',
       desc: 'Chicken slow cooked to tenderness in apple cider vinegar and peppercorns',

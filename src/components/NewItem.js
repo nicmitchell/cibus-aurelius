@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Form, Button } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
-import shortid from 'shortid';
-
 import * as fields from '../data/newFieldProperties';
 
 export default class NewItem extends Component {
@@ -22,18 +20,17 @@ export default class NewItem extends Component {
 
   addNew = (e) => {
     e.preventDefault();
+    const image = this.state.addNewImage;
     const item = {
-      id: shortid.generate(),
       name: this.state.addNewName,
       slug: this.slugify(this.state.addNewName),
       desc: this.state.addNewDescription,
       type: this.state.addNewType,
       time: this.state.addNewTime,
       side: this.state.addNewSide,
-      image: this.state.addNewImage,
       recipe: this.state.addNewRecipe,
     }
-    this.props.addNewMenuItem(item, item.image);
+    this.props.addNewMenuItem(item, image);
   }
 
   slugify(name) {

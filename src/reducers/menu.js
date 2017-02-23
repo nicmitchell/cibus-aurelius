@@ -5,11 +5,6 @@ function menu(state = {}, action) { // { type, id, key, value }
         ...state,
         ...action.values
       }
-    // case '@@router/LOCATION_CHANGE':
-    //   return {
-    //     ...state,
-    //     currentMenu: action.payload.pathname.slice(1)
-    //   }
     case 'ADD_NEW_MENU_ITEM':
       return { 
         ...state,
@@ -37,12 +32,5 @@ function updateMenuItem(item, values) {
     ...values
   }
 }
-
-// function addNewMenuItem(state, id) {
-//   return {
-//     [id]: Object.assign({}, state.newItem, { id }),
-//     newItem: Object.assign({})
-//   }
-// }
 
 export default menu;
