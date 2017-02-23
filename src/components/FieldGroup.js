@@ -11,14 +11,21 @@ export default class FieldGroup extends Component {
 
   setValidationState = (input) => {
     let isValid = this.state.isValid;
+    // Required Text inputs
     if (input.type === 'text' && this.props.inputProps.required) {
       isValid = (!input.value.length) ? 'error' : 'success'
     }
+    // Select input
     if (input.type === 'select-one') {
       isValid = (input.value === 'select') ? 'error' : 'success'
     }
+    // Image upload
     if (input.type === 'file') {
       isValid = (!input.files.length) ? 'error' : 'success'
+    }
+    // Optional inputs
+    if (!this.props.inputProps.required) {
+      isValid = (!input.value.length) ? null : 'success'
     }
     this.setState({ isValid: isValid });
   }
