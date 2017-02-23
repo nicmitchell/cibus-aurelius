@@ -11,10 +11,9 @@ function menu(state = {}, action) { // { type, id, key, value }
     //     currentMenu: action.payload.pathname.slice(1)
     //   }
     case 'ADD_NEW_MENU_ITEM':
-    // Save to Firebase
       return { 
         ...state,
-        [action.id]: action.value
+        [action.key]: action.values
       }
     case 'ADD_NEW_RECIPE':
       return { ...state }
