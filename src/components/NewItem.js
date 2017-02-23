@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { Grid, Row, Col, Form, Button } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
 import shortid from 'shortid';
-import { storage } from '../firebase';
+
 import * as fields from '../data/newFieldProperties';
 
 export default class NewItem extends Component {
   constructor(props) {
     super(props);
-    this.storageRef = storage.ref('/images');
     this.state = {
       isDisabled: true,
       addNewName: null,
       addNewDescription: null,
-      addNewType: 'select',
+      addNewType: '',
       addNewTime: null,
       addNewSide: null,
       addNewImage: null,
@@ -25,28 +24,41 @@ export default class NewItem extends Component {
     e.preventDefault();
     const item = {
       id: shortid.generate(),
-      name: this.state.addNewName.value,
-      desc: this.state.addNewDescription.value,
-      type: this.state.addNewType.value,
-      time: this.state.addNewTime.value,
-      side: this.state.addNewSide.value,
-      image: this.state.addNewImage.files[0],
-      recipe: this.state.addNewRecipe.value,
+      name: this.state.addNewName,
+      slug: this.slugify(this.state.addNewName),
+      desc: this.state.addNewDescription,
+      type: this.state.addNewType,
+      time: this.state.addNewTime,
+      side: this.state.addNewSide,
+      image: this.state.addNewImage,
+      recipe: this.state.addNewRecipe,
     }
+    this.props.addNewMenuItem(item, item.image);
+  }
 
-    console.log(item);
-    let file = item.image;
-    // send to action handler
-    this.props.addNewMenuItem(item);
-    this.storageRef.child('/test/test.jpg').put(file, { contentType: 'image/jpeg' });
+  slugify(name) {
+    // Thanks Andrew Stewart 
+    // https://andrew.stwrt.ca/posts/js-slugify/ 
+    return name.toString().toLowerCase().trim()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/&/g, '-and-')         // Replace & with 'and'
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-');        // Replace multiple - with single -
   }
 
   handleChange = (e) => {
     const newState = Object.assign({}, this.state);
-    newState[e.target.id] = e.target.value;
-    this.setState({
-      ...newState
-    })
+    const value = (e.target.type === 'file') ? e.target.files[0] : e.target.value;
+    newState[e.target.id] = value ;
+    this.setState({...newState });
+    this.checkButtonState();
+  }
+
+  checkButtonState() {
+    const buttonState = Object.keys(fields).every((field) => {
+      return (fields[field].required && this.state[field]) || !fields[field].required;
+    });
+    this.setState({ isDisabled: !buttonState });
   }
 
   render = () => {
@@ -60,7 +72,7 @@ export default class NewItem extends Component {
             <FieldGroup inputProps={ fields.addNewDescription } handleChange={ this.handleChange } />
             <FieldGroup inputProps={ fields.addNewType } handleChange={ this.handleChange } value={ this.state.addNewType } />
             <FieldGroup inputProps={ fields.addNewTime } handleChange={ this.handleChange } />
-            <FieldGroup inputProps={ fields.addNewImage } />
+            <FieldGroup inputProps={ fields.addNewImage } handleChange={ this.handleChange } />
             <hr />
             <h3>Optional</h3>
             <FieldGroup inputProps={ fields.addNewSide } handleChange={ this.handleChange }/>
