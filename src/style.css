@@ -53,8 +53,9 @@ a {
   -webkit-transition: 0.5s ease;
 }
 
-a:hover {
-  color: #aaccaa;
+a:hover, a:visited {
+  text-decoration: none;
+  color: inherit;
 }
 
 /****Menu Cards****/
@@ -63,6 +64,7 @@ a:hover {
   margin-bottom: 29px;
   box-sizing: border-box;
   overflow: hidden;
+  box-shadow: 2px 2px rgba(0,0,0,0.075);
 }
 
 .menu-card.content {
@@ -75,6 +77,9 @@ a:hover {
   background: #f1f0f1;
   box-sizing: border-box;
   position: relative;
+  border-right: 1px solid rgba(255,255,255,1);
+  border-bottom: 1px solid rgba(255,255,255,1);
+  border-left: 1px solid rgba(255,255,255,1);
 }
 
 .menu-card .bottom .btn {
@@ -96,6 +101,30 @@ a:hover {
 
 .navbar {
   border-radius: 0;
+  background: transparent url('/images/dark_matter.png');
+  box-shadow: 0 3px 1px 1px rgba(0,0,0,0.1);
+}
+
+.navbar-inverse .navbar-brand {
+  color: rgb(207, 207, 207);
+}
+
+.navbar-inverse .navbar-brand span.title {
+  vertical-align: super;
+  text-decoration: none;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:visited,{
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-inverse .navbar-brand .glyphicon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  vertical-align: top;
+  position: relative;
+  top: -0.25rem;
 }
 
 /**Footer**/
@@ -152,14 +181,14 @@ a:hover {
   }
 }
 
-.menu-card .featured {
+.menu-card .featured, .menu-card .single {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
   transition: max-height 0.5s, opacity 1s;
 }
 
-.menu-card .featured.show {
+.menu-card .featured.show, .menu-card .single.show {
   max-height: 1000px;
   opacity: 1;
   filter: blur(0px);
@@ -168,6 +197,16 @@ a:hover {
 
 .menu-card .featured.loading {
   min-height: 235px;
+  max-height: 1000px;
+  opacity: 1;
+  background: url('/images/menu-card-blurred.jpg');
+  background-size: cover;
+  filter: blur(30px);
+  transition: max-height 0.5s, opacity 1s, filter 0.05s;
+}
+
+.menu-card .single.loading {
+  min-height: 654px;
   max-height: 1000px;
   opacity: 1;
   background: url('/images/menu-card-blurred.jpg');

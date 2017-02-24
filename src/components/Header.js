@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class Header extends React.Component {
@@ -8,7 +8,7 @@ export default class Header extends React.Component {
       <Navbar inverse collapseOnSelect className="nolist">
         <Navbar.Header>
           <Navbar.Brand>
-            <LinkContainer to="/"><NavItem eventKey={1}><span>Cibus Aurelius</span></NavItem></LinkContainer>
+            <LinkContainer to="/"><NavItem eventKey={1}><Glyphicon glyph="grain"/><span className="title">Cibus Aurelius</span></NavItem></LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
