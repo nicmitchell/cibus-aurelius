@@ -26,7 +26,7 @@ export default class ItemCard extends React.Component {
   }
 
   render() {
-    const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.name)}`;
+    const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.slug)}`;
     const img = (this.props.image) ? `${ firebaseConfig.menuImgBaseURL }${ this.props.image }-700.jpg?alt=media` : null;
 
     return(
@@ -40,7 +40,7 @@ export default class ItemCard extends React.Component {
         component="div"
       >
         <div className="menu-card">
-          <Link to={ link } data={ this.props }>
+          <Link to={ link } onClick={ (e) => this.props.setCurrentSingleItem(this.props) }>
             <div className={ `featured ${ this.state.imageStatus }` }>
               <img 
                 ref={ (image) => this.image = image } 
@@ -53,7 +53,7 @@ export default class ItemCard extends React.Component {
             </div>
           </Link> 
           <div className="bottom">
-            <Link to={ link }><h4 className="">{ this.props.name }</h4></Link>
+            <Link to={ link } onClick={ (e) => this.props.setCurrentSingleItem(this.props) }><h4 className="">{ this.props.name }</h4></Link>
             <p>{ this.props.desc }</p>
             { this.props.side && <p>Side: { this.props.side } </p>}
             <p className="prep-time"><Glyphicon glyph="time"/> { this.props.time }

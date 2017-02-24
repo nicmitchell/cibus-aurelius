@@ -5,13 +5,16 @@ function menu(state = {}, action) { // { type, id, key, value }
         ...state,
         ...action.values
       }
+    case 'SET_CURRENT_SINGLE_ITEM':
+      return {
+        ...state,
+        currentMenuItem: action.values
+      }
     case 'ADD_NEW_MENU_ITEM':
       return { 
         ...state,
         [action.key]: action.values
       }
-    case 'ADD_NEW_RECIPE':
-      return { ...state }
     case 'DELETE_MENU_ITEM':
       return { ...state }
     case 'UPDATE_MENU_ITEM':

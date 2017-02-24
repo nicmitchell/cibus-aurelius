@@ -1,56 +1,72 @@
 import React from 'react';
 import { Grid, Col, Image, Glyphicon } from 'react-bootstrap';
-import Transition from 'react-addons-css-transition-group'
 import ItemOptions from './ItemOptions';
-import menu from '../data/menu-data';
+import firebaseConfig from '../firebaseConfig';
 
 export default class SingleItem extends React.Component {
   constructor(props) {
     super(props);
-    this.meal = this.findMeal(this.props.params.mealType);
-    this.img = `/images/${ this.meal.image || "no-pic" }-1000.jpg`;
-    this.state = {};
+    this.findMeal(this.props.params);
+    this.state = {
+      name: '',
+      img: '',
+      desc: '',
+      side: '',
+      time: '',
+      options: '',
+      recipe: '',
+      imageStatus: 'hide'
+    };
   }
 
-  componentDidMount() {
-    window.setTimeout(() => {
-      this.setState({ show: !this.state.show });
-    }, 300);
+  componentWillReceiveProps(nextProps) {
+    this.setState({ ...nextProps.menu.currentMenuItem });
+    if (!nextProps.image) {
+      this.setState({ imageStatus: 'loading' });
+    }
   }
-  
-  findMeal(mealType) {
-    return menu[mealType].find((item) => {
-      return item.name === this.props.params.meal;
-    }, this);
+
+  imageLoaded = (e) => {
+    this.setState({ imageStatus: 'show' });
+  }
+
+  findMeal({ meal, mealType }) {
+    const menu = this.props.menu[mealType] || {};
+    this.props.fetchAllFromFirebase().then((ref) => {
+      const menu = ref.val()[mealType];
+      Object.keys(menu).forEach((item) => {
+        const meal = menu[item];
+        if (meal.slug === this.props.params.meal) {
+          this.props.setCurrentSingleItem(meal);
+          meal.img = (meal.image) ? `${ firebaseConfig.menuImgBaseURL }${ meal.image }-1000.jpg?alt=media` : null;
+          this.setState({ ...meal })
+        }
+      }, this);
+    });
   }
 
   render() {
     return(
-      <Transition key={ this.meal.name }
-        transitionName="content"
-        transitionAppear={ true }
-        transitionAppearTimeout={ 1000 }
-        transitionEnter={ true }
-        transitionEnterTimeout={ 1000 }
-        transitionLeaveTimeout={ 1000 }
-        component="div"
-      >
-        <Grid key={ this.meal.name }>
-          <Col className="menu-card content">
-            { this.meal.image && <Image responsive src={ this.img } /> }
-            <div className="bottom">
-              <h2 className="">{ this.meal.name }</h2>
-              <p>{ this.meal.desc }</p>
-              { this.meal.side && <p>Side: { this.meal.side } </p>}
-              <p className="prep-time"><Glyphicon glyph="time"/> { this.meal.time }
-              { this.meal.options && <ItemOptions options={ this.meal.options }/> }
-              </p>
-              <h3>Recipe</h3>
-              { this.meal.recipe }
-            </div>
-          </Col>
-        </Grid>
-      </Transition>
+      <Grid key={ this.state.name }>
+        <Col className="menu-card content">
+          <div className={ `single ${ this.state.imageStatus }` }>
+            { this.state.image && <Image responsive src={ this.state.img } onLoad={ (e) => this.imageLoaded(e) }/> }
+          </div>
+          <div className="bottom">
+            <h2 className="">{ this.state.name }</h2>
+            <p>{ this.state.desc }</p>
+            { this.state.side && <p>Side: { this.state.side } </p>}
+            { this.state.time && <p className="prep-time"><Glyphicon glyph="time"/> { this.state.time }</p> }
+            { this.state.options && <ItemOptions options={ this.state.options }/> }
+            { this.state.recipe && 
+              <div>
+                <h3>Recipe</h3>
+                { this.state.recipe }
+              </div>
+            }
+          </div>
+        </Col>
+      </Grid>
     )
   }
 }

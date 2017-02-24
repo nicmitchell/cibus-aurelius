@@ -21,7 +21,7 @@ export default class MenuGrid extends React.Component {
   render = () => {
     const mealType = this.props.params.mealType;
     const menuItems = this.props.menu[mealType] || {};
-    const menuItemsArray = Object.keys(menuItems).map(key =>  menuItems[key]);
+    const menuItemsArray = Object.keys(menuItems).map(key => Object.assign({}, menuItems[key], { key: key }));
     const columns = this.getColumns(menuItemsArray);
 
     return(
@@ -32,7 +32,7 @@ export default class MenuGrid extends React.Component {
               return (    
                 <Col md={4} sm={6} xs={12} key={ idx }>
                   { 
-                    column.map((item, idx) => <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ mealType } />)
+                    column.map((item, idx) => <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ mealType } setCurrentSingleItem={ this.props.setCurrentSingleItem } />)
                   }
                 </Col>
               )

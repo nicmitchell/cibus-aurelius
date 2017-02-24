@@ -35,10 +35,16 @@ export function updateMenuItem(values) { // { id, key, value }
 }
 
 export function addNewMenuItem(key, values) {
-  console.log('adding new menu item', key, values);
   return { 
     type: 'ADD_NEW_MENU_ITEM',
     key: key,
+    values
+  }
+}
+
+export function setCurrentSingleItem(values) {
+  return {
+    type: 'SET_CURRENT_SINGLE_ITEM',
     values
   }
 }
