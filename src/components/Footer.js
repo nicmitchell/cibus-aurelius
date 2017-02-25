@@ -5,6 +5,7 @@ export default class Footer extends React.Component {
   render() {
    return(
     <footer id="footer">
+      <hr />
       <Grid>
         <Row>
           <Col md={12}>

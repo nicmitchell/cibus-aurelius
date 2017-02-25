@@ -129,11 +129,20 @@ a:hover, a:visited {
 
 /**Footer**/
 #footer {
+  position: relative;
   display: block;
   padding: 50px 0 40px;
   color: #e2e2e2;
   font-size: 14px;
   line-height: 18px;
+}
+
+#footer hr {
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,0.125);
+  box-shadow: 0 1px rgba(255,255,255,0.8);
+  top: 4rem;
 }
 
 .copyright {
@@ -146,8 +155,12 @@ a:hover, a:visited {
 }
 
 .copyright-year {
+  color: rgb(207, 207, 207);
   padding: 2rem;
-  background-color: #000;
+  box-shadow: 0 3px 1px 1px rgba(0,0,0,0.1);
+  background: #000 url('/images/dark_matter.png');
+  border-right: 1px solid rgba(255,255,255,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.8);
 }
 
 /**Transitions**/
