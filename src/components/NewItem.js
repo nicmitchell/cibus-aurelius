@@ -47,7 +47,7 @@ export default class NewItem extends Component {
     const newState = Object.assign({}, this.state);
     const value = (e.target.type === 'file') ? e.target.files[0] : e.target.value;
     newState[e.target.id] = value;
-    this.setState({...newState });
+    this.setState({ ...newState });
     this.checkButtonState();
     this.previewImage(value);
   }
@@ -62,13 +62,25 @@ export default class NewItem extends Component {
   previewImage(file) {
     if (file.constructor === File || file.type.split('/')[0] === 'image') {
       const reader = new FileReader();
-      reader.onload = this.imageIsLoaded;
+      reader.onload = (e) => this.setState ({ imagePreview: e.target.result }); this.imageIsLoaded;
       reader.readAsDataURL(file);
     }
   }
 
   imageIsLoaded = (e) => {
     this.setState({ imagePreview: e.target.result });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      addNewName: nextProps.name || '',
+      addNewDescription: nextProps.desc || '',
+      addNewType: nextProps.type || '',
+      addNewTime: nextProps.time || '',
+      addNewSide: nextProps.side || '',
+      addNewImage: nextProps.image || '',
+      addNewRecipe: nextProps.recipe || '',
+    });
   }
 
   render = () => {

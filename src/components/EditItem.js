@@ -8,14 +8,12 @@ import firebaseConfig from '../firebaseConfig';
 export default class EditItem extends Component {
   constructor(props) {
     super(props);
-    this.setCurrentMeal();
+    this.state = this.props.menu.currentMenuItem || {};
   }
 
-  setCurrentMeal = () => {
-    if (!this.props.menu.currentMenuItem) {
-      this.props.findCurrentMenuItem(this.props.params);
-    } else {
-      this.state = this.props.menu.currentMenuItem;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.menu.currentMenuItem) {
+      this.setState({ ...nextProps.menu.currentMenuItem });
     }
   }
 
