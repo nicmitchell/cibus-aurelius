@@ -8,13 +8,13 @@ export default class NewItem extends Component {
     super(props);
     this.state = {
       isDisabled: true,
-      addNewName: this.props.name || null,
-      addNewDescription: this.props.desc || null,
+      addNewName: this.props.name || '',
+      addNewDescription: this.props.desc || '',
       addNewType: this.props.type || '',
-      addNewTime: this.props.time || null,
-      addNewSide: this.props.side || null,
-      addNewImage: this.props.image || null,
-      addNewRecipe: this.props.recipe || null,
+      addNewTime: this.props.time || '',
+      addNewSide: this.props.side || '',
+      addNewImage: this.props.image || '',
+      addNewRecipe: this.props.recipe || '',
     }
   }
 
@@ -46,9 +46,10 @@ export default class NewItem extends Component {
   handleChange = (e) => {
     const newState = Object.assign({}, this.state);
     const value = (e.target.type === 'file') ? e.target.files[0] : e.target.value;
-    newState[e.target.id] = value ;
+    newState[e.target.id] = value;
     this.setState({...newState });
     this.checkButtonState();
+    this.previewImage(value);
   }
 
   checkButtonState() {
@@ -58,18 +59,31 @@ export default class NewItem extends Component {
     this.setState({ isDisabled: !buttonState });
   }
 
+  previewImage(file) {
+    if (file.constructor === File || file.type.split('/')[0] === 'image') {
+      const reader = new FileReader();
+      reader.onload = this.imageIsLoaded;
+      reader.readAsDataURL(file);
+    }
+  }
+
+  imageIsLoaded = (e) => {
+    this.setState({ imagePreview: e.target.result });
+  }
+
   render = () => {
     return (
       <Grid>
         <Row>
           <Col xs={ 8 } xsOffset={ 2 }>
+          <img className="img-responsive" src={ this.state.imagePreview } alt="Preview"/>
           <h2>Add New Menu Item</h2>
           <Form onSubmit={ (e) => this.addNew(e) }>
             <FieldGroup inputProps={ fields.addNewName } handleChange={ this.handleChange } value={ this.state.addNewName }/>
             <FieldGroup inputProps={ fields.addNewDescription } handleChange={ this.handleChange } value={ this.state.addNewDescription }/>
             <FieldGroup inputProps={ fields.addNewType } handleChange={ this.handleChange } value={ this.state.addNewType } />
             <FieldGroup inputProps={ fields.addNewTime } handleChange={ this.handleChange } value={ this.state.addNewTime }/>
-            <FieldGroup inputProps={ fields.addNewImage } handleChange={ this.handleChange } value={ this.state.addNewImage }/>
+            <FieldGroup inputProps={ fields.addNewImage } handleChange={ this.handleChange } />
             <hr />
             <h3>Optional</h3>
             <FieldGroup inputProps={ fields.addNewSide } handleChange={ this.handleChange } value={ this.state.addNewSide }/>
