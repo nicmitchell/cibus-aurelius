@@ -52,7 +52,7 @@ export default class FieldGroup extends Component {
         <ControlLabel>{ props.label } </ControlLabel>
         { 
           (props.type === 'text' || props.type === 'file' || props.componentClass === 'textarea') &&
-            <FormControl inputRef={ (input) => this[props.name] = input } { ...props } />
+            <FormControl inputRef={ (input) => this[props.name] = input } { ...props } value={ props.value }/>
         }
         { 
           props.componentClass === 'select' && 

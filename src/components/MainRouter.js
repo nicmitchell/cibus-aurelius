@@ -7,6 +7,7 @@ import Home from './Home';
 import MenuGrid from './MenuGrid';
 import SingleItem from './SingleItem';
 import NewItem from './NewItem';
+import EditItem from './EditItem';
 
 export default class MainRouter extends React.Component {
   render() {
@@ -18,6 +19,7 @@ export default class MainRouter extends React.Component {
           <Route path="/new" component={ NewItem }/>
           <Route path="/:mealType" component={ MenuGrid }/>
           <Route path="/:mealType/:meal" component={ SingleItem }/>
+          <Route path="/:mealType/:meal/edit" component={ EditItem }/>
         </Route>
       </Router>
       </Provider>

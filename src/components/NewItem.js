@@ -8,13 +8,13 @@ export default class NewItem extends Component {
     super(props);
     this.state = {
       isDisabled: true,
-      addNewName: null,
-      addNewDescription: null,
-      addNewType: '',
-      addNewTime: null,
-      addNewSide: null,
-      addNewImage: null,
-      addNewRecipe: null,
+      addNewName: this.props.name || null,
+      addNewDescription: this.props.desc || null,
+      addNewType: this.props.type || '',
+      addNewTime: this.props.time || null,
+      addNewSide: this.props.side || null,
+      addNewImage: this.props.image || null,
+      addNewRecipe: this.props.recipe || null,
     }
   }
 
@@ -65,15 +65,15 @@ export default class NewItem extends Component {
           <Col xs={ 8 } xsOffset={ 2 }>
           <h2>Add New Menu Item</h2>
           <Form onSubmit={ (e) => this.addNew(e) }>
-            <FieldGroup inputProps={ fields.addNewName } handleChange={ this.handleChange } />
-            <FieldGroup inputProps={ fields.addNewDescription } handleChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.addNewName } handleChange={ this.handleChange } value={ this.state.addNewName }/>
+            <FieldGroup inputProps={ fields.addNewDescription } handleChange={ this.handleChange } value={ this.state.addNewDescription }/>
             <FieldGroup inputProps={ fields.addNewType } handleChange={ this.handleChange } value={ this.state.addNewType } />
-            <FieldGroup inputProps={ fields.addNewTime } handleChange={ this.handleChange } />
-            <FieldGroup inputProps={ fields.addNewImage } handleChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.addNewTime } handleChange={ this.handleChange } value={ this.state.addNewTime }/>
+            <FieldGroup inputProps={ fields.addNewImage } handleChange={ this.handleChange } value={ this.state.addNewImage }/>
             <hr />
             <h3>Optional</h3>
-            <FieldGroup inputProps={ fields.addNewSide } handleChange={ this.handleChange }/>
-            <FieldGroup inputProps={ fields.addNewRecipe } handleChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.addNewSide } handleChange={ this.handleChange } value={ this.state.addNewSide }/>
+            <FieldGroup inputProps={ fields.addNewRecipe } handleChange={ this.handleChange } value={ this.state.addNewRecipe }/>
             <Col smOffset={ 4 } sm={ 4 }>
               <Button type="submit" disabled={ this.state.isDisabled } block >Add</Button>
             </Col>
