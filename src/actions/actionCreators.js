@@ -27,7 +27,7 @@ export function deleteMenuItem(values) {
   }
 }
 
-export function updateMenuItem(values) { // { id, key, value }
+export function updateMenuItem(values) {
   return { 
     type: 'UPDATE_MENU_ITEM',
     values
@@ -51,14 +51,28 @@ export function setCurrentSingleItem(values) {
 
 export function fetchAllFromFirebase(ref='/') {
   return (dispatch) => {
-    return database.ref(ref).once('value', (snapshot) => {
-      const val = snapshot.val();
-      dispatch(getFirebaseValuesSuccess(val));
-    })
-    .catch((error) => {
-      console.log('Firebase error:', error);
-      dispatch(getFirebaseValuesError(error));
-    })
+    return database.ref(ref).once('value')
+      .then((snapshot) => {
+        const val = snapshot.val();
+        dispatch(getFirebaseValuesSuccess(val));
+      }, (error) => {
+        console.log('Firebase error:', error);
+        dispatch(getFirebaseValuesError(error));
+      });
+  };
+}
+
+export function findCurrentMenuItem({ meal, mealType }) {
+  return (dispatch, getState) => {
+    if (meal) {
+      const menu = getState().menu[mealType];
+      Object.keys(menu).forEach((key) => {
+        const item = menu[key];
+        if (item.slug === meal) {
+          dispatch(setCurrentSingleItem(item));
+        }
+      }, this);
+    } 
   }
 }
 

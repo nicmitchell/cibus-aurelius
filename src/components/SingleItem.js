@@ -1,22 +1,24 @@
 import React from 'react';
-import { Grid, Col, Image, Glyphicon } from 'react-bootstrap';
+import { Grid, Col, Image, Glyphicon, Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 import ItemOptions from './ItemOptions';
 import firebaseConfig from '../firebaseConfig';
 
 export default class SingleItem extends React.Component {
   constructor(props) {
     super(props);
-    this.findMeal(this.props.params);
-    this.state = {
-      name: '',
-      img: '',
-      desc: '',
-      side: '',
-      time: '',
-      options: '',
-      recipe: '',
-      imageStatus: 'hide'
-    };
+    this.state = this.props.menu.currentMenuItem || this.defaultState;
+  }
+
+  defaultState = {
+    name: '',
+    image: '',
+    desc: '',
+    side: '',
+    time: '',
+    options: '',
+    recipe: '',
+    imageStatus: 'hide'
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,27 +32,14 @@ export default class SingleItem extends React.Component {
     this.setState({ imageStatus: 'show' });
   }
 
-  findMeal({ meal, mealType }) {
-    const menu = this.props.menu[mealType] || {};
-    this.props.fetchAllFromFirebase().then((ref) => {
-      const menu = ref.val()[mealType];
-      Object.keys(menu).forEach((item) => {
-        const meal = menu[item];
-        if (meal.slug === this.props.params.meal) {
-          this.props.setCurrentSingleItem(meal);
-          meal.img = (meal.image) ? `${ firebaseConfig.menuImgBaseURL }${ meal.image }-1000.jpg?alt=media` : null;
-          this.setState({ ...meal })
-        }
-      }, this);
-    });
-  }
-
   render() {
+    const imgSrc = (this.state.image) ? `${ firebaseConfig.menuImgBaseURL }${ this.state.image }-1000.jpg?alt=media` : null;
+    const editLink = `${ this.props.location.pathname }/edit`;
     return(
       <Grid key={ this.state.name }>
         <Col className="menu-card content">
           <div className={ `single ${ this.state.imageStatus }` }>
-            { this.state.image && <Image responsive src={ this.state.img } onLoad={ (e) => this.imageLoaded(e) }/> }
+            { this.state.image && <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/> }
           </div>
           <div className="bottom">
             <h2 className="">{ this.state.name }</h2>
@@ -66,6 +55,7 @@ export default class SingleItem extends React.Component {
             }
           </div>
         </Col>
+        <Button><Link to={ editLink }>Edit</Link></Button>
       </Grid>
     )
   }

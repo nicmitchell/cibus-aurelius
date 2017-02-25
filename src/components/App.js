@@ -3,8 +3,11 @@ import Header from './Header';
 import Footer from './Footer';
 
 export default class App extends Component {
-  componentDidMount() {
-    this.props.fetchAllFromFirebase();
+  constructor(props) {
+    super(props);
+    this.props.fetchAllFromFirebase().then((data) => {
+      this.props.findCurrentMenuItem(this.props.params);
+    });
   }
 
   render() {
