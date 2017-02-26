@@ -128,7 +128,7 @@ a:hover, a:visited {
 }
 
 /**Footer**/
-#footer {
+footer {
   position: relative;
   display: block;
   padding: 50px 0 40px;
@@ -137,7 +137,7 @@ a:hover, a:visited {
   line-height: 18px;
 }
 
-#footer hr {
+footer hr {
   position: absolute;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,0.125);
@@ -241,4 +241,16 @@ a:hover, a:visited {
     width: 100%;
     padding: 1rem;
     border-color: #a94442;
+}
+
+button.edit {
+  position: fixed;
+  bottom: -1px;
+  right: 1.4rem;
+  border-radius: 0;
+  z-index: 9999;
+}
+
+.hide {
+  display: none;
 }
