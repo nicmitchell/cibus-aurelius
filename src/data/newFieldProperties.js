@@ -1,21 +1,21 @@
-export const addNewName = {
-  name: "addNewName",
+export const name = {
+  name: "name",
   type: "text",
   label: "Name the dish",
   placeholder: "Item Name",
   required: true
 }
 
-export const addNewDescription = {
-  name: "addNewDescription",
+export const desc = {
+  name: "desc",
   type: "text",
   label: "Describe it",
   placeholder: "Description",
   required: true
 }
 
-export const addNewType = {
-  name: "addNewType",
+export const type = {
+  name: "type",
   componentClass: "select",
   label: "Select a category",
   placeholder: "Type",
@@ -28,32 +28,31 @@ export const addNewType = {
   }
 }
 
-export const addNewTime = {
-  name: "addNewTime",
+export const time = {
+  name: "time",
   type: "text",
   label: "Time",
   placeholder: "How long will it take?",
   required: true
 }
 
-export const addNewImage = {
-  name: "addNewImage",
+export const image = {
+  name: "image",
   type: "file",
   label: "Upload that pic", 
-  required: true
+  // required: true
 }
 
-export const addNewSide = {
-  name: "addNewSide",
+export const side = {
+  name: "side",
   type: "text",
   label: "Side",
   placeholder: "Suggested side dish"
 }
 
-export const addNewRecipe = {
-  name: "addNewRecipe",
+export const recipe = {
+  name: "recipe",
   componentClass: "textarea",
   label: "Recipe",
   placeholder: "Show off that recipe (enter html)",
 }
-

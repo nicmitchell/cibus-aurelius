@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewItem from './NewItem';
+import ItemForm from './ItemForm';
 import { Grid, Col, Image, Glyphicon, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import ItemOptions from './ItemOptions';
@@ -19,7 +19,7 @@ export default class EditItem extends Component {
 
   render = () => {
     return(
-      <NewItem { ...this.state }/>
+      <ItemForm { ...this.state }/>
     )
   }
 }

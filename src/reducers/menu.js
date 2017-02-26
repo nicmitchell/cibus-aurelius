@@ -23,7 +23,13 @@ function menu(state = {}, action) { // { type, id, key, value }
         [action.id]: updateMenuItem(state[action.id], { [action.key]: action.value })
       }
     case 'SAVE_MENU_ITEM':
-      return { ...state }
+      const mealType = action.values.type;
+      const key = action.key;
+      const item = action.values;
+      return { 
+        ...state,
+        [mealType]: { key: item }
+      }
     default: 
       return state
   }

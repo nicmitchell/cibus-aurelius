@@ -2,12 +2,14 @@ import { database, storage } from '../firebase';
 const databaseRef = database.ref('/');
 const storageRef = storage.ref('/images');
 
-export function addNewItemToFirebase(data, image) {
-  return(dispatch) => {
-    storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: 'image/jpeg' });
+export function addNewItem(data, image) {
+  return (dispatch) => {
+    if (image && typeof image !== 'string') {
+      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.contentType });
+    }
     return databaseRef.child(data.type).push(data)
       .then((ref) => {
-        dispatch(addNewMenuItem(ref.getKey(), data));
+        dispatch(addNewMenuItemToState(ref.getKey(), data));
       })
       .catch((error) => {
         dispatch(pushFirebaseError(error));
@@ -15,9 +17,18 @@ export function addNewItemToFirebase(data, image) {
   }
 }
 
-export function addNewRecipe(values) {
-  return { 
-    type: 'ADD_NEW_RECIPE'
+export function saveMenuItem(key, data, image) {
+  return (dispatch) => {
+    if (image && typeof image !== 'string') {
+      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.contentType });
+    }
+    return databaseRef.child(`${ data.type }/${ key }`).set(data)
+      .then((ref) => {
+        dispatch(saveMenuItemToState(key, data));
+      })
+      .catch((error) => {
+        dispatch(pushFirebaseError(error));
+      });
   }
 }
 
@@ -34,7 +45,15 @@ export function updateMenuItem(values) {
   }
 }
 
-export function addNewMenuItem(key, values) {
+export function saveMenuItemToState(key, values, type) {
+  return {
+    type: 'SAVE_MENU_ITEM',
+    key: key,
+    values
+  }
+}
+
+export function addNewMenuItemToState(key, values) {
   return { 
     type: 'ADD_NEW_MENU_ITEM',
     key: key,
@@ -69,6 +88,7 @@ export function findCurrentMenuItem({ meal, mealType }) {
       Object.keys(menu).forEach((key) => {
         const item = menu[key];
         if (item.slug === meal) {
+          item.key = key;
           dispatch(setCurrentSingleItem(item));
         }
       }, this);
