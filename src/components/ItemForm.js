@@ -55,10 +55,13 @@ export default class ItemForm extends Component {
     this.setState({ isDisabled: !buttonState });
   }
 
-  previewImage(file) {
+  previewImage = (file) => {
     if (file.constructor === File && file.type.split('/')[0] === 'image') {
       const reader = new FileReader();
-      reader.onload = (e) => this.setState ({ image: e.target.result });
+      const setState = (image) => this.setState({ image: image });
+      reader.onload = (e) => {
+        setState(e.target.result);
+      };
       reader.readAsDataURL(file);
       this.setState({ imageFile: file });
     } else {
@@ -71,11 +74,18 @@ export default class ItemForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ ...nextProps.state });
+    this.setState({ 
+      ...nextProps.state, 
+      image: `${nextProps.state.image}-1000.jpg?alt=media`,
+    });
+  }
+
+  getImgSrc = () => {
+    return this.state.previewImage || this.state.image || null;
   }
 
   render = () => {
-    const imgSrc = (this.state.image) ? `${ this.state.image }-1000.jpg?alt=media` : null;
+    const imgSrc = this.state.image;
     return (
       <Col className={ `menu-card content ${ this.props.className }` }>
         <div className={ `single ${ this.state.imageStatus }` }>
