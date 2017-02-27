@@ -5,7 +5,7 @@ const storageRef = storage.ref('/images');
 export function addNewItem(data, image) {
   return (dispatch) => {
     if (image && typeof image !== 'string') {
-      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.contentType });
+      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.type });
     }
     return databaseRef.child(data.type).push(data)
       .then((ref) => {
@@ -20,7 +20,7 @@ export function addNewItem(data, image) {
 export function saveMenuItem(key, data, image) {
   return (dispatch) => {
     if (image && typeof image !== 'string') {
-      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.contentType });
+      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.type });
     }
     return databaseRef.child(`${ data.type }/${ key }`).set(data)
       .then((ref) => {
