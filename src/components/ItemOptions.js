@@ -5,7 +5,7 @@ export default class ItemOptions extends React.Component {
     return (
       <span className="options">
         <em>Options: </em>
-        <select name="Options" className="tmSelect auto" data-class="tmSelect tmSelect2" data-constraints="">
+        <select name="Options">
           {
             this.props.options.map((option) => {
               return <option key={ option }>{ option }</option>
