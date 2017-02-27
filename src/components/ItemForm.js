@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Grid, Row, Col, Form, Button, Image } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
 import * as fields from '../data/newFieldProperties';
-import firebaseConfig from '../firebaseConfig';
 
 export default class ItemForm extends Component {
   constructor(props) {
@@ -25,15 +24,9 @@ export default class ItemForm extends Component {
       time: this.state.time,
       image: this.state.image,
       side: this.state.side,
-      recipe: this.state.recipe,
+      recipe: this.state.recipe
     }
-
-    if (this.props.newItem && !key) {
-      this.props.addNewMenuItem(item, imageFile);
-    } else {
-      this.props.saveMenuItem(key, item, imageFile);
-      this.props.router.goBack();
-    }
+    this.props.handleSubmit({ key, item, imageFile })
   }
 
   slugify(name) {
@@ -82,7 +75,7 @@ export default class ItemForm extends Component {
   }
 
   render = () => {
-    const imgSrc = (this.state.image) ? `${ firebaseConfig.menuImgBaseURL }${ this.state.image }-1000.jpg?alt=media` : null;
+    const imgSrc = (this.state.image) ? `${ this.state.image }-1000.jpg?alt=media` : null;
     return (
       <Col className={ `menu-card content ${ this.props.className }` }>
         <div className={ `single ${ this.state.imageStatus }` }>

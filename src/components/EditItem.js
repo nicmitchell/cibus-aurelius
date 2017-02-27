@@ -3,7 +3,6 @@ import ItemForm from './ItemForm';
 import { Grid, Col, Image, Glyphicon, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import ItemOptions from './ItemOptions';
-import firebaseConfig from '../firebaseConfig';
 
 export default class EditItem extends Component {
   constructor(props) {

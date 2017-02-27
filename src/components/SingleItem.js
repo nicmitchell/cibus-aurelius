@@ -3,7 +3,6 @@ import { Grid, Row, Col, Image, Glyphicon, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import ItemOptions from './ItemOptions';
 import ItemForm from './ItemForm';
-import firebaseConfig from '../firebaseConfig';
 
 export default class SingleItem extends React.Component {
   constructor(props) {
@@ -43,8 +42,13 @@ export default class SingleItem extends React.Component {
     this.setState({ ...editState });
   }
 
+  handleSubmit = ({ key, item, imageFile }) => {
+    this.props.saveMenuItem(key, item, imageFile);
+    this.props.router.goBack();
+  }
+
   render() {
-    const imgSrc = (this.state.image) ? `${ firebaseConfig.menuImgBaseURL }${ this.state.image }-1000.jpg?alt=media` : null;
+    const imgSrc = (this.state.image) ? `${ this.state.image }-1000.jpg?alt=media` : null;
     const editLink = `${ this.props.location.pathname }/edit`;
     return(
       <Grid>
@@ -67,7 +71,7 @@ export default class SingleItem extends React.Component {
               }
             </div>
           </Col>
-          <ItemForm state={ this.state } className={ this.state.showEdit } saveMenuItem={ this.props.saveMenuItem } router={ this.props.router }/>
+          <ItemForm state={ this.state } className={ this.state.showEdit } handleSubmit={ this.handleSubmit } router={ this.props.router }/>
         </Row>
         <Button onClick={ (e) => this.toggleEdit(e) } className="edit">{ this.state.editButtonText }</Button>
       </Grid>

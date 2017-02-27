@@ -3,7 +3,6 @@ import ItemOptions from './ItemOptions';
 import { Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 import Transition from 'react-addons-css-transition-group';
-import firebaseConfig from '../firebaseConfig';
 
 export default class ItemCard extends React.Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export default class ItemCard extends React.Component {
 
   render() {
     const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.slug)}`;
-    const img = (this.props.image) ? `${ firebaseConfig.menuImgBaseURL }${ this.props.image }-700.jpg?alt=media` : null;
+    const img = (this.props.image) ? `${ this.props.image }-700.jpg?alt=media` : null;
 
     return(
       <Transition 
