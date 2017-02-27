@@ -1,4 +1,4 @@
-function menu(state = {}, action) { // { type, id, key, value }
+function menu(state = {}, action) {
   switch(action.type) {
     case 'GET_FIREBASE_VALUES_SUCCESS':
       return {

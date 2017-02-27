@@ -80,10 +80,6 @@ export default class ItemForm extends Component {
     });
   }
 
-  getImgSrc = () => {
-    return this.state.previewImage || this.state.image || null;
-  }
-
   render = () => {
     const imgSrc = this.state.image;
     return (
