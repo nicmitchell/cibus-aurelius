@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Row, Col, Image, Glyphicon, Button } from 'react-bootstrap';
-import { Link } from 'react-router';
 import ItemOptions from './ItemOptions';
 import ItemForm from './ItemForm';
 
@@ -49,7 +48,6 @@ export default class SingleItem extends React.Component {
 
   render() {
     const imgSrc = (this.state.image) ? `${ this.state.image }-1000.jpg?alt=media` : null;
-    const editLink = `${ this.props.location.pathname }/edit`;
     return(
       <Grid>
         <Row>

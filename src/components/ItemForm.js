@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Form, Button, Image } from 'react-bootstrap';
+import { Col, Form, Button, Image } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
 import * as fields from '../data/newFieldProperties';
 
