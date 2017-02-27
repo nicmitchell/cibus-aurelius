@@ -65,4 +65,10 @@ export default class FieldGroup extends Component {
       </FormGroup>
     )
   }
+
+  static propTypes = {
+    inputProps: React.PropTypes.object.isRequired,
+    handleChange: React.PropTypes.func.isRequired,
+    value: React.PropTypes.string
+  }
 }

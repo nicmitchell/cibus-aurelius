@@ -19,4 +19,10 @@ export default class App extends Component {
       </div>
     );
   }
+
+  static propTypes = {
+    fetchAllFromFirebase: React.PropTypes.func.isRequired,
+    findCurrentMenuItem: React.PropTypes.func.isRequired,
+    params: React.PropTypes.object.isRequired
+  }
 }

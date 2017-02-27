@@ -63,4 +63,16 @@ export default class ItemCard extends React.Component {
       </Transition>
     );
   }
+
+  static propTypes = {
+    mealType: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    desc: React.PropTypes.string.isRequired,
+    time: React.PropTypes.string.isRequired,
+    slug: React.PropTypes.string.isRequired,
+    image: React.PropTypes.string,
+    side: React.PropTypes.string,
+    options: React.PropTypes.array,
+    setCurrentSingleItem: React.PropTypes.func.isRequired
+  };
 }

@@ -99,4 +99,10 @@ export default class ItemForm extends Component {
       </Col>
     )
   }
+
+  static propTypes = {
+    className: React.PropTypes.string.isRequired,
+    handleSubmit: React.PropTypes.func.isRequired,
+    state: React.PropTypes.object.isRequired
+  }
 }

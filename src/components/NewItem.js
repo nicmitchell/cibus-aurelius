@@ -11,4 +11,8 @@ export default class NewItem extends Component {
       <ItemForm handleSubmit={ this.handleSubmit }/>
     )
   }
+
+  static propTypes = {
+    addNewMenuItem: React.PropTypes.func.isRequired
+  }
 }

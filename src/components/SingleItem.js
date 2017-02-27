@@ -69,10 +69,16 @@ export default class SingleItem extends React.Component {
               }
             </div>
           </Col>
-          <ItemForm state={ this.state } className={ this.state.showEdit } handleSubmit={ this.handleSubmit } router={ this.props.router }/>
+          <ItemForm state={ this.state } className={ this.state.showEdit } handleSubmit={ this.handleSubmit }/>
         </Row>
         <Button onClick={ (e) => this.toggleEdit(e) } className="edit">{ this.state.editButtonText }</Button>
       </Grid>
     )
+  }
+
+  static propTypes = {
+    menu: React.PropTypes.object,
+    saveMenuItem: React.PropTypes.func,
+    router: React.PropTypes.object.isRequired
   }
 }

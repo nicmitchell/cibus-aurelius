@@ -32,7 +32,7 @@ export default class MenuGrid extends React.Component {
               return (    
                 <Col md={4} sm={6} xs={12} key={ idx }>
                   { 
-                    column.map((item, idx) => <ItemCard { ...item } key={ idx } itemKey={ idx } mealType={ mealType } setCurrentSingleItem={ this.props.setCurrentSingleItem } />)
+                    column.map((item, idx) => <ItemCard { ...item } mealType={ mealType } setCurrentSingleItem={ this.props.setCurrentSingleItem } />)
                   }
                 </Col>
               )
@@ -41,5 +41,11 @@ export default class MenuGrid extends React.Component {
         </Row>
       </Grid>
     )
+  }
+
+  static propTypes = {
+    params: React.PropTypes.object.isRequired,
+    setCurrentSingleItem: React.PropTypes.func,
+    menu: React.PropTypes.object
   }
 }

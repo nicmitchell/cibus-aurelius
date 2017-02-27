@@ -15,4 +15,8 @@ export default class ItemOptions extends React.Component {
       </span>
     )
   }
+
+  static propTypes = {
+    options: React.PropTypes.object.isRequired
+  }
 }
