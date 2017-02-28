@@ -17,6 +17,6 @@ export default class ItemOptions extends React.Component {
   }
 
   static propTypes = {
-    options: React.PropTypes.object.isRequired
+    options: React.PropTypes.array.isRequired
   }
 }
