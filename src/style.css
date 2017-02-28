@@ -58,6 +58,98 @@ a:hover, a:visited {
   color: inherit;
 }
 
+.root {
+  position: relative;
+}
+
+/****Home****/
+.home {
+  position: relative;
+  top: -9.2rem;
+  margin-bottom: -9.2rem;
+  height: 92vh;
+  overflow: hidden;
+}
+
+.home .flex-container {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.home .flex-item {
+  flex: 1 1 0;
+  height: 100vh;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  transition: all 0.35s;
+}
+
+.home .flex-item:hover {
+  flex-grow: 3;
+  height: 110vh;
+  transition: all 0.35s;
+}
+
+.home .flex-item h1 {
+  color: rgba(255,255,255,0.9);
+  text-align: left;
+  transform: translateX(0%);
+  font-size: 36px;
+  transition: all 0.35s;
+}
+
+.home .flex-item li {
+  background-color: rgba(0,0,0,0.65);
+  padding: 0.5rem 1.5rem;
+  transition: all 0.35s;
+}
+
+.home .flex-item:hover li {
+  background: rgba(255,255,255,0.65);
+  padding: 1rem;
+  transition: all 0.35s;
+}
+
+.home .flex-item:hover h1 {
+  color: rgba(0,0,0,0.9);
+  font-size: 48px;
+  transform: translateX(40%);
+  transition: all 0.35s;
+}
+
+.home .flex-item.entree {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Fpasta-fresca-with-chicken-1000.jpg?alt=media');
+  background-color: green;
+  transition: all 0.35s;
+}
+
+.home .flex-item.entree:hover, .home .flex-item.light:hover, .home .flex-item.dessert:hover {
+  background-color: transparent;
+  background-position: 50% 50%;
+  background-blend-mode: none;
+  transition: all 0.35s;
+}
+
+.home .flex-item.light {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Ffresh-froot-1000.jpg?alt=media');
+  background-color: yellow;
+  transition: all 0.35s;
+}
+
+.home .flex-item.dessert {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Fwarm-creme-brulee-1000.jpg?alt=media');
+  background-position: 90% 50%;
+  background-color: orange;
+  transition: all 0.35s;
+}
+
 /****Menu Cards****/
 .menu-card {
   background-color: #f1f0f1;
@@ -157,7 +249,7 @@ footer hr {
 .copyright-year {
   color: rgb(207, 207, 207);
   padding: 2rem;
-  box-shadow: 0 3px 1px 1px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px rgba(0,0,0,0.1);
   background: #000 url('/images/dark_matter.png');
   border-right: 1px solid rgba(255,255,255,0.8);
   border-bottom: 1px solid rgba(255,255,255,0.8);
