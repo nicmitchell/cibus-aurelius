@@ -125,7 +125,7 @@ a:hover, a:visited {
 }
 
 .home .flex-item.entree {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Fpasta-fresca-with-chicken-1000.jpg?alt=media');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Fpasta-fresca-with-chicken.jpeg?alt=media');
   background-color: green;
   transition: all 0.35s;
 }
@@ -138,13 +138,13 @@ a:hover, a:visited {
 }
 
 .home .flex-item.light {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Ffresh-froot-1000.jpg?alt=media');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Ffresh-froot.jpeg?alt=media');
   background-color: yellow;
   transition: all 0.35s;
 }
 
 .home .flex-item.dessert {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Fwarm-creme-brulee-1000.jpg?alt=media');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/cibus-aurelius.appspot.com/o/images%2Fwarm-creme-brulee.jpeg?alt=media');
   background-position: 90% 50%;
   background-color: orange;
   transition: all 0.35s;
