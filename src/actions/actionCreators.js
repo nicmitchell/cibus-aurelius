@@ -14,7 +14,7 @@ export function addNewMenuItem(item, imageFile) {
     item.id = databaseRef.child(item.type).push().getKey();
     return databaseRef.child(item.type).child(item.id).set(item)
       .then((ref) => {
-        dispatch(addNewMenuItemToState(ref.getKey(), item));
+        dispatch(addNewMenuItemToState(item.id, item));
       })
       .catch((error) => {
         dispatch(pushFirebaseError(error));
@@ -48,7 +48,7 @@ export function deleteMenuItem(id, type) {
   return (dispatch) => {
     return databaseRef.child(type).child(id).remove()
       .then((ref) => {
-        dispatch(removeMenuItemFromState({ type, id }));
+        dispatch(removeMenuItemFromState({ id, type }));
       })
       .catch((error) => {
         dispatch(pushFirebaseError(error));

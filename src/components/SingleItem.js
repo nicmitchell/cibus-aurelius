@@ -46,6 +46,11 @@ export default class SingleItem extends React.Component {
     this.props.router.goBack();
   }
 
+  deleteItem = (id, type) => {
+    this.props.deleteMenuItem(id, type);
+    this.props.router.goBack();
+  }
+
   render() {
     const imgSrc = this.state.image;
     return(
@@ -69,7 +74,7 @@ export default class SingleItem extends React.Component {
               }
             </div>
           </Col>
-          <ItemForm state={ this.state } className={ this.state.showEdit } handleSubmit={ this.handleSubmit }/>
+          <ItemForm state={ this.state } className={ this.state.showEdit } handleSubmit={ this.handleSubmit } deleteItem={ this.deleteItem }/>
         </Row>
         <Button onClick={ (e) => this.toggleEdit(e) } className="edit">{ this.state.editButtonText }</Button>
       </Grid>

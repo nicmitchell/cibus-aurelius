@@ -106,7 +106,7 @@ export default class ItemForm extends Component {
   deleteItem() {
     const id = this.state.id;
     const type = this.state.type;
-    this.props.deleteMenuItem(id, type);
+    this.props.deleteItem(id, type);
   }
 
   render = () => {
@@ -118,7 +118,7 @@ export default class ItemForm extends Component {
         </div>
         
         <div className="bottom">
-          <h2>{ `${ this.state.title } Menu Item` }<Button onClick={ (e) => this.props.deleteMenuItem(this.state.id, this.state.type) } bsStyle="danger" className='delete'>Delete</Button></h2>
+          <h2>{ `${ this.state.title } Menu Item` }<Button onClick={ (e) => this.deleteItem(e) } bsStyle="danger" className='delete'>Delete</Button></h2>
           <Form onSubmit={ (e) => this.handleSubmit(e) }>
             <FieldGroup inputProps={ fields.name } handleChange={ this.handleChange } value={ this.state.name }/>
             <FieldGroup inputProps={ fields.desc } handleChange={ this.handleChange } value={ this.state.desc }/>
