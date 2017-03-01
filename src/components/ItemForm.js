@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Form, Button, Image } from 'react-bootstrap';
+import { Col, Form, Button, Image, Modal } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
 import * as fields from '../data/newFieldProperties';
 
@@ -10,6 +10,7 @@ export default class ItemForm extends Component {
       ...this.props.state,
       title: (this.props.new) ? 'Add New' : 'Edit',
       isDisabled: true,
+      showModal: false
     }
   }
 
@@ -109,6 +110,28 @@ export default class ItemForm extends Component {
     this.props.deleteItem(id, type);
   }
 
+  renderModal() {
+    return (
+      <Modal bsSize="small" show={ this.state.showModal } keyboard={ true } onHide={ () => this.setState({ showModal: false }) }>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete { this.state.name }?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>You are about to delete <strong>{ this.state.name }</strong>.</p>
+          <p>Its deliciousness will be lost forever, and all the children of the world will cry.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={ (e) => this.setState({ showModal: false }) }>Cancel</Button>
+          <Button onClick={ (e) => this.deleteItem(e) } bsStyle="danger" className="delete">Delete</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  renderDeleteButton() {
+    return <Button bsStyle="danger" className="delete" onClick={ (e) => this.setState({ showModal: true }) }>Delete</Button>
+  }
+
   render = () => {
     const imgSrc = this.state.imagePreview || this.state.image;
     return (
@@ -118,7 +141,7 @@ export default class ItemForm extends Component {
         </div>
         
         <div className="bottom">
-          <h2>{ `${ this.state.title } Menu Item` }<Button onClick={ (e) => this.deleteItem(e) } bsStyle="danger" className='delete'>Delete</Button></h2>
+          <h2>{ `${ this.state.title } Menu Item` } { this.renderDeleteButton() }</h2>
           <Form onSubmit={ (e) => this.handleSubmit(e) }>
             <FieldGroup inputProps={ fields.name } handleChange={ this.handleChange } value={ this.state.name }/>
             <FieldGroup inputProps={ fields.desc } handleChange={ this.handleChange } value={ this.state.desc }/>
@@ -132,6 +155,7 @@ export default class ItemForm extends Component {
             <Button block type="submit" disabled={ this.state.isDisabled }>Save</Button>
           </Form>
         </div>
+        { this.renderModal() }
       </Col>
     )
   }
