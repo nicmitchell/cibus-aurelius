@@ -39,6 +39,23 @@ export default class FieldGroup extends Component {
     this.props.handleChange(e);
   }
 
+  renderSelect(props, options) {
+    return (
+      <FormControl { ...props }>
+        { 
+          Object.keys(options)
+            .map((option) => {
+              return <option key={ option } value={ option }>{options[option]}</option>
+            })
+        }
+      </FormControl>
+    )
+  }
+
+  renderInput(props) {
+    return <FormControl { ...props } value={ props.value }/>
+  }
+
   render() {
     const props = Object.assign({}, this.props.inputProps);
     const options = Object.assign({}, props.options);
@@ -47,21 +64,18 @@ export default class FieldGroup extends Component {
     props.value = this.props.value || '';
     delete props.options;
 
+    const showInput = (props, options) => {
+      if (props.componentClass === 'select') {
+        return ( this.renderSelect(props, options) );
+      } else { // text, textarea, and file
+        return ( this.renderInput(props) );
+      }
+    }
+
     return (
       <FormGroup controlId={ props.name } validationState={ this.state.isValid }>
         <ControlLabel>{ props.label } </ControlLabel>
-        { 
-          (props.type === 'text' || props.type === 'file' || props.componentClass === 'textarea') &&
-            <FormControl { ...props } value={ props.value }/>
-        }
-        { 
-          props.componentClass === 'select' && 
-            <FormControl { ...props }>
-              { 
-                Object.keys(options).map((option) => <option key={ option } value={ option }>{options[option]}</option>)
-              }
-            </FormControl>
-        }
+        { showInput(props, options) }
       </FormGroup>
     )
   }
