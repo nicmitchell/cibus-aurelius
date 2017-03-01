@@ -15,18 +15,25 @@ export default class ItemForm extends Component {
   handleSubmit(e) {
     e.preventDefault(e);
     const imageFile = this.state.imageFile;
-    const key = this.state.key;
+    const key = this.state.id;
+    const slug = this.slugify(this.state.name);
     const item = {
+      id: this.state.id,
+      slug: slug,
       name: this.state.name,
-      slug: this.slugify(this.state.name),
       desc: this.state.desc,
       type: this.state.type,
       time: this.state.time,
-      image: this.state.image,
+      image: this.formatImageURL(slug),
       side: this.state.side,
       recipe: this.state.recipe
     }
-    this.props.handleSubmit({ key, item, imageFile })
+    this.props.handleSubmit(item, imageFile)
+  }
+
+  formatImageURL(slug) {
+    const ext = this.state.imageFile.type.split('/')[1];
+    return `${ process.env.REACT_APP_FIREBASE_IMAGE_BASE_URL }${ slug }.${ ext }?alt=media`;
   }
 
   slugify(name) {
@@ -41,11 +48,23 @@ export default class ItemForm extends Component {
 
   handleChange = (e) => {
     const newState = Object.assign({}, this.state);
-    const value = (e.target.type === 'file') ? e.target.files[0] : e.target.value;
+    const value = e.target.value;
     newState[e.target.id] = value;
     this.setState({ ...newState });
     this.checkButtonState();
-    this.previewImage(value);
+  }
+
+  handleImageChange = (e) => {
+    const imageFile = e.target.files[0];
+    if (imageFile.constructor === File && imageFile.type.split('/')[0] === 'image') {
+      this.previewImage(imageFile);
+      this.setState({
+        imageFile: imageFile
+      });
+    } else {
+      // this.showFileError();
+    }
+    this.checkButtonState();
   }
 
   checkButtonState() {
@@ -56,17 +75,16 @@ export default class ItemForm extends Component {
   }
 
   previewImage = (file) => {
-    if (file.constructor === File && file.type.split('/')[0] === 'image') {
-      const reader = new FileReader();
-      const setState = (image) => this.setState({ image: image });
-      reader.onload = (e) => {
-        setState(e.target.result);
-      };
-      reader.readAsDataURL(file);
-      this.setState({ imageFile: file });
-    } else {
-      // this.showFileError();
-    }
+    const reader = new FileReader();
+    const setState = (image) => {
+      this.setState({ 
+        imagePreview: image
+      });
+    };
+    reader.onload = (e) => {
+      setState(e.target.result);
+    };
+    reader.readAsDataURL(file);
   }
 
   imageLoaded = (e) => {
@@ -74,14 +92,15 @@ export default class ItemForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const image = (nextProps.state && nextProps.state.image) ? `${nextProps.state.image}` : null;
     this.setState({ 
       ...nextProps.state, 
-      image: `${nextProps.state.image}-1000.jpg?alt=media`,
+      image: image
     });
   }
 
   render = () => {
-    const imgSrc = this.state.image;
+    const imgSrc = this.state.imagePreview || this.state.image;
     return (
       <Col className={ `menu-card content ${ this.props.className }` }>
         <div className={ `single ${ this.state.imageStatus }` }>
@@ -94,7 +113,7 @@ export default class ItemForm extends Component {
             <FieldGroup inputProps={ fields.desc } handleChange={ this.handleChange } value={ this.state.desc }/>
             <FieldGroup inputProps={ fields.type } handleChange={ this.handleChange } value={ this.state.type }/>
             <FieldGroup inputProps={ fields.time } handleChange={ this.handleChange } value={ this.state.time }/>
-            <FieldGroup inputProps={ fields.image } handleChange={ this.handleChange } />
+            <FieldGroup inputProps={ fields.image } handleChange={ this.handleImageChange } />
             <hr />
             <h3>Optional</h3>
             <FieldGroup inputProps={ fields.side } handleChange={ this.handleChange } value={ this.state.side }/>
@@ -107,8 +126,8 @@ export default class ItemForm extends Component {
   }
 
   static propTypes = {
-    className: React.PropTypes.string.isRequired,
+    className: React.PropTypes.string,
     handleSubmit: React.PropTypes.func.isRequired,
-    state: React.PropTypes.object.isRequired
+    state: React.PropTypes.object
   }
 }

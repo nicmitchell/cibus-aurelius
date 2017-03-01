@@ -15,8 +15,10 @@ export default class ItemCard extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (!nextProps.image) {
       this.setState({ imageStatus: 'hide' });
-    } else {
+    } else if (this.state.imageStatus !== 'show') {
       this.setState({ imageStatus: 'loading' });
+    } else {
+      this.setState({ imageStatus: 'show'});
     }
   }
   
@@ -26,7 +28,7 @@ export default class ItemCard extends React.Component {
 
   render() {
     const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.slug)}`;
-    const img = (this.props.image) ? `${ this.props.image }-700.jpg?alt=media` : null;
+    const img = `${ this.props.image }` || null;
 
     return(
       <Transition 

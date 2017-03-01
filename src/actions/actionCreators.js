@@ -2,29 +2,41 @@ import { database, storage } from '../firebase';
 const databaseRef = database.ref('/');
 const storageRef = storage.ref('/images');
 
-export function addNewItem(data, image) {
+export function addNewMenuItem(item, imageFile) {
   return (dispatch) => {
-    if (image && typeof image !== 'string') {
-      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.type });
+    if (imageFile) {
+      const ext = imageFile.type.split('/')[1];
+      storageRef.child(`${ item.slug }.${ ext }`)
+        .put(imageFile, { contentType: imageFile.type })
+        .then(success => console.log('Firebase push image success', success))
+        .catch(error => console.log('Firebase push image error', error));
     }
-    return databaseRef.child(data.type).push(data)
+    item.id = databaseRef.child(item.type).push();
+    return databaseRef.child(item.type).set(item)
       .then((ref) => {
-        dispatch(addNewMenuItemToState(ref.getKey(), data));
+        dispatch(addNewMenuItemToState(ref.getKey(), item));
       })
       .catch((error) => {
         dispatch(pushFirebaseError(error));
       });
   }
 }
-
-export function saveMenuItem(key, data, image) {
+export function saveMenuItem(item, imageFile) {
   return (dispatch) => {
-    if (image && typeof image !== 'string') {
-      storageRef.child(`/images/menu/${ data.slug }.jpg`).put(image, { contentType: image.type });
+    if (imageFile) {
+      const ext = imageFile.type.split('/')[1];
+      storageRef.child(`${ item.slug }.${ ext }`)
+        .put(imageFile, { contentType: imageFile.type })
+        .then((success) => {
+          console.log('Firebase push image success', success);
+        })
+        .catch((error) => { 
+          console.log('Firebase push image error', error)
+        });
     }
-    return databaseRef.child(`${ data.type }/${ key }`).set(data)
+    return databaseRef.child(`${ item.type }/${ item.id }`).set(item)
       .then((ref) => {
-        dispatch(saveMenuItemToState(key, data));
+        dispatch(saveMenuItemToState(item));
       })
       .catch((error) => {
         dispatch(pushFirebaseError(error));
@@ -45,10 +57,9 @@ export function updateMenuItem(values) {
   }
 }
 
-export function saveMenuItemToState(key, values, type) {
+export function saveMenuItemToState(values, type) {
   return {
     type: 'SAVE_MENU_ITEM',
-    key: key,
     values
   }
 }
@@ -88,7 +99,7 @@ export function findCurrentMenuItem({ meal, mealType }) {
       Object.keys(menu).forEach((key) => {
         const item = menu[key];
         if (item.slug === meal) {
-          item.key = key;
+          item.id = key;
           dispatch(setCurrentSingleItem(item));
         }
       }, this);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ItemForm from './ItemForm';
 
 export default class NewItem extends Component {
-  handleSubmit = ({ item, imageFile }) => {
+  handleSubmit = (item, imageFile) => {
     this.props.addNewMenuItem(item, imageFile);
   }
 
@@ -13,6 +13,6 @@ export default class NewItem extends Component {
   }
 
   static propTypes = {
-    addNewMenuItem: React.PropTypes.func.isRequired
+    addNewMenuItem: React.PropTypes.func
   }
 }

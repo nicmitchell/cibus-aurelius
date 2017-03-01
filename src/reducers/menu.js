@@ -24,9 +24,10 @@ function menu(state = {}, action) {
       }
     case 'SAVE_MENU_ITEM':
       const mealType = action.values.type;
+      const id = action.values.id;
       return { 
         ...state,
-        [state[mealType][action.key]]: action.values
+        [state[mealType][id]]: action.values
       }
     default: 
       return state

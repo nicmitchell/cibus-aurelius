@@ -41,13 +41,13 @@ export default class SingleItem extends React.Component {
     this.setState({ ...editState });
   }
 
-  handleSubmit = ({ key, item, imageFile }) => {
-    this.props.saveMenuItem(key, item, imageFile);
+  handleSubmit = (item, imageFile) => {
+    this.props.saveMenuItem(item, imageFile);
     this.props.router.goBack();
   }
 
   render() {
-    const imgSrc = (this.state.image) ? `${ this.state.image }-1000.jpg?alt=media` : null;
+    const imgSrc = this.state.image || null;
     return(
       <Grid>
         <Row>
