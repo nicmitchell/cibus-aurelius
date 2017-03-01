@@ -44,7 +44,7 @@ export default class FieldGroup extends Component {
     const options = Object.assign({}, props.options);
     props.onChange = this.handleChange;
     props.onBlur = this.handleBlur;
-    props.value = this.props.value;
+    props.value = this.props.value || '';
     delete props.options;
 
     return (
@@ -52,11 +52,11 @@ export default class FieldGroup extends Component {
         <ControlLabel>{ props.label } </ControlLabel>
         { 
           (props.type === 'text' || props.type === 'file' || props.componentClass === 'textarea') &&
-            <FormControl inputRef={ (input) => this[props.name] = input } { ...props } value={ props.value }/>
+            <FormControl { ...props } value={ props.value }/>
         }
         { 
           props.componentClass === 'select' && 
-            <FormControl inputRef={ (input) => this[props.name] = input } { ...props }>
+            <FormControl { ...props }>
               { 
                 Object.keys(options).map((option) => <option key={ option } value={ option }>{options[option]}</option>)
               }

@@ -15,8 +15,10 @@ function menu(state = {}, action) {
         ...state,
         [action.key]: action.values
       }
-    case 'DELETE_MENU_ITEM':
-      return { ...state }
+    case 'REMOVE_MENU_ITEM':
+      const newState = { ...state };
+      delete newState[action.type][action.id];
+      return newState;
     case 'UPDATE_MENU_ITEM':
       return {
         ...state,

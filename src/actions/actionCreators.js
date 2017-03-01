@@ -11,8 +11,8 @@ export function addNewMenuItem(item, imageFile) {
         .then(success => console.log('Firebase push image success', success))
         .catch(error => console.log('Firebase push image error', error));
     }
-    item.id = databaseRef.child(item.type).push();
-    return databaseRef.child(item.type).set(item)
+    item.id = databaseRef.child(item.type).push().getKey();
+    return databaseRef.child(item.type).child(item.id).set(item)
       .then((ref) => {
         dispatch(addNewMenuItemToState(ref.getKey(), item));
       })
@@ -34,7 +34,7 @@ export function saveMenuItem(item, imageFile) {
           console.log('Firebase push image error', error)
         });
     }
-    return databaseRef.child(`${ item.type }/${ item.id }`).set(item)
+    return databaseRef.child(item.type).child(item.id).set(item)
       .then((ref) => {
         dispatch(saveMenuItemToState(item));
       })
@@ -44,9 +44,22 @@ export function saveMenuItem(item, imageFile) {
   }
 }
 
-export function deleteMenuItem(values) {
+export function deleteMenuItem(id, type) {
+  return (dispatch) => {
+    return databaseRef.child(type).child(id).remove()
+      .then((ref) => {
+        dispatch(removeMenuItemFromState({ type, id }));
+      })
+      .catch((error) => {
+        dispatch(pushFirebaseError(error));
+      });
+  }
+}
+
+export function removeMenuItemFromState(values) {
   return { 
-    type: 'DELETE_MENU_ITEM'
+    type: 'REMOVE_MENU_ITEM',
+    values
   }
 }
 
@@ -57,7 +70,7 @@ export function updateMenuItem(values) {
   }
 }
 
-export function saveMenuItemToState(values, type) {
+export function saveMenuItemToState(values) {
   return {
     type: 'SAVE_MENU_ITEM',
     values

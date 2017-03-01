@@ -58,6 +58,10 @@ a:hover, a:visited {
   color: inherit;
 }
 
+button {
+  border-radius: 0 !important;
+}
+
 .root {
   position: relative;
 }
@@ -318,6 +322,22 @@ footer hr {
   background-size: cover;
   filter: blur(30px);
   transition: max-height 0.5s, opacity 1s, filter 0.05s;
+}
+
+.menu-card button.delete {
+  color: #d9534f;
+  font-family: 'Open Sans', sans-serif;
+  background-color: transparent;
+  float: right;
+  border-width: 2px;
+}
+
+.menu-card button.delete:hover {
+  color: #c9302c;
+}
+
+.menu-card button.delete:active {
+  color: #fff;
 }
 
 /* New Item */

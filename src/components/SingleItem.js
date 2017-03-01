@@ -47,7 +47,7 @@ export default class SingleItem extends React.Component {
   }
 
   render() {
-    const imgSrc = this.state.image || null;
+    const imgSrc = this.state.image;
     return(
       <Grid>
         <Row>

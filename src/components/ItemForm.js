@@ -8,6 +8,7 @@ export default class ItemForm extends Component {
     super(props);
     this.state = {
       ...this.props.state,
+      title: (this.props.new) ? 'Add New' : 'Edit',
       isDisabled: true,
     }
   }
@@ -15,7 +16,6 @@ export default class ItemForm extends Component {
   handleSubmit(e) {
     e.preventDefault(e);
     const imageFile = this.state.imageFile;
-    const key = this.state.id;
     const slug = this.slugify(this.state.name);
     const item = {
       id: this.state.id,
@@ -24,9 +24,9 @@ export default class ItemForm extends Component {
       desc: this.state.desc,
       type: this.state.type,
       time: this.state.time,
-      image: this.formatImageURL(slug),
-      side: this.state.side,
-      recipe: this.state.recipe
+      image: (imageFile) ? this.formatImageURL(slug) : '',
+      side: this.state.side || '',
+      recipe: this.state.recipe || ''
     }
     this.props.handleSubmit(item, imageFile)
   }
@@ -62,9 +62,13 @@ export default class ItemForm extends Component {
         imageFile: imageFile
       });
     } else {
-      // this.showFileError();
+      this.showFileError();
     }
     this.checkButtonState();
+  }
+
+  showFileError = () => {
+    // show inline error
   }
 
   checkButtonState() {
@@ -92,11 +96,17 @@ export default class ItemForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const image = (nextProps.state && nextProps.state.image) ? `${nextProps.state.image}` : null;
+    const image = (nextProps.state && nextProps.state.image) ? nextProps.state.image : undefined;
     this.setState({ 
       ...nextProps.state, 
       image: image
     });
+  }
+
+  deleteItem() {
+    const id = this.state.id;
+    const type = this.state.type;
+    this.props.deleteMenuItem(id, type);
   }
 
   render = () => {
@@ -106,14 +116,15 @@ export default class ItemForm extends Component {
         <div className={ `single ${ this.state.imageStatus }` }>
           { this.state.image && <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/> }
         </div>
+        
         <div className="bottom">
-          <h2>Add New Menu Item</h2>
+          <h2>{ `${ this.state.title } Menu Item` }<Button onClick={ (e) => this.props.deleteMenuItem(this.state.id, this.state.type) } bsStyle="danger" className='delete'>Delete</Button></h2>
           <Form onSubmit={ (e) => this.handleSubmit(e) }>
             <FieldGroup inputProps={ fields.name } handleChange={ this.handleChange } value={ this.state.name }/>
             <FieldGroup inputProps={ fields.desc } handleChange={ this.handleChange } value={ this.state.desc }/>
             <FieldGroup inputProps={ fields.type } handleChange={ this.handleChange } value={ this.state.type }/>
             <FieldGroup inputProps={ fields.time } handleChange={ this.handleChange } value={ this.state.time }/>
-            <FieldGroup inputProps={ fields.image } handleChange={ this.handleImageChange } />
+            <FieldGroup inputProps={ fields.image } handleChange={ this.handleImageChange }/>
             <hr />
             <h3>Optional</h3>
             <FieldGroup inputProps={ fields.side } handleChange={ this.handleChange } value={ this.state.side }/>

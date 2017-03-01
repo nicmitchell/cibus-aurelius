@@ -28,7 +28,7 @@ export default class ItemCard extends React.Component {
 
   render() {
     const link = `/${ this.props.mealType }/${ encodeURIComponent(this.props.slug)}`;
-    const img = `${ this.props.image }` || null;
+    const img = this.props.image;
 
     return(
       <Transition 
