@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import MenuDropdown from './MenuDropdown';
 
 export default class Header extends React.Component {
   render() {
@@ -20,15 +21,16 @@ export default class Header extends React.Component {
         <Navbar.Collapse>
           <Nav pullRight>
             <LinkContainer to="/entree">
-              <NavItem eventKey={2}>Entrees</NavItem>
+              <NavItem eventKey={2}><Glyphicon glyph="cutlery" /> Entrees</NavItem>
             </LinkContainer>
             <LinkContainer to="/light">
-              <NavItem eventKey={3}>Light Fare</NavItem>
+              <NavItem eventKey={3}><Glyphicon glyph="leaf" /> Light Fare</NavItem>
             </LinkContainer>
             <LinkContainer to="/dessert">
-              <NavItem eventKey={4}>Dessert</NavItem>
+              <NavItem eventKey={4}><Glyphicon glyph="ice-lolly-tasted" /> Dessert</NavItem>
             </LinkContainer>
-          </Nav>        
+            <MenuDropdown/>
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     )

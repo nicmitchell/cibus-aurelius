@@ -61,7 +61,7 @@ export default class SingleItem extends React.Component {
               { this.state.image && <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/> }
             </div>
             <div className="bottom">
-              <h2 className="">{ this.state.name }</h2>
+              <h2 className="">{ this.state.name } <Button onClick={ (e) => this.toggleEdit(e) } className="edit">{ this.state.editButtonText }</Button></h2>
               <p>{ this.state.desc }</p>
               { this.state.side && <p>Side: { this.state.side } </p>}
               { this.state.time && <p className="prep-time"><Glyphicon glyph="time"/> { this.state.time }</p> }
@@ -76,7 +76,6 @@ export default class SingleItem extends React.Component {
           </Col>
           <ItemForm state={ this.state } className={ this.state.showEdit } handleSubmit={ this.handleSubmit } deleteItem={ this.deleteItem }/>
         </Row>
-        <Button onClick={ (e) => this.toggleEdit(e) } className="edit">{ this.state.editButtonText }</Button>
       </Grid>
     )
   }
