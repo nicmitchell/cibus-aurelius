@@ -6,14 +6,14 @@ export default class Home extends React.Component {
     return (
       <div className="nolist home">
         <div className="flex-container">
-          <Link to="/entree" className="flex-item entree">
-            <li>
-              <h1>Entrees</h1>
-            </li>
-          </Link>
           <Link to="/light" className="flex-item light">
             <li>
               <h1>Light Fare</h1>
+            </li>
+          </Link>
+          <Link to="/entree" className="flex-item entree">
+            <li>
+              <h1>Entrees</h1>
             </li>
           </Link>
           <Link to="/dessert" className="flex-item dessert">
