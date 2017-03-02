@@ -1,10 +1,9 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 import ItemCard from './ItemCard';
 
 export default class MenuGrid extends React.Component {
   getColumns = (items) => {
-
     const total = items.length;
     const columnLength = parseInt(total / 3, 10);
     const remainder = total % 3;
@@ -18,27 +17,28 @@ export default class MenuGrid extends React.Component {
     return [col1, col2, col3];
   }
 
+  // TODO: Sort columns by image presence
+  sortByImage = (items) => {
+    return items.sort((a, b) => {
+      if (a.image && b.image) return 0;
+      if (a.image && !b.image) return -1;
+      if (!a.image && b.image) return 1;
+    });
+  }
+
   render = () => {
     const mealType = this.props.params.mealType;
     const menuItems = this.props.menu[mealType] || {};
     const menuItemsArray = Object.keys(menuItems).map(key => Object.assign({}, menuItems[key], { key: key }));
-    const columns = this.getColumns(menuItemsArray);
+    // const columns = this.getColumns(menuItemsArray);
 
     return(
       <Grid>
-        <Row>
+        <div className="menu-card-flex-container">
           { 
-            columns.map((column, idx) => {
-              return (    
-                <Col md={4} sm={6} xs={12} key={ idx }>
-                  { 
-                    column.map((item, idx) => <ItemCard { ...item } mealType={ mealType } setCurrentSingleItem={ this.props.setCurrentSingleItem } />)
-                  }
-                </Col>
-              )
-            })
+            menuItemsArray.map((item, idx) => <ItemCard { ...item } mealType={ mealType } setCurrentSingleItem={ this.props.setCurrentSingleItem } />)
           }
-        </Row>
+        </div>
       </Grid>
     )
   }
