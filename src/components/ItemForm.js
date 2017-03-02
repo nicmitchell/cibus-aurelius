@@ -137,7 +137,7 @@ export default class ItemForm extends Component {
     return (
       <Col className={ `menu-card content ${ this.props.className }` }>
         <div className={ `single ${ this.state.imageStatus }` }>
-          { this.state.image && <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/> }
+          <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/>
         </div>
         
         <div className="bottom">

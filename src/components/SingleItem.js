@@ -25,6 +25,8 @@ export default class SingleItem extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({ ...nextProps.menu.currentMenuItem });
     if (!nextProps.image) {
+      this.setState({ imageStatus: 'hide' });
+    } else {
       this.setState({ imageStatus: 'loading' });
     }
   }
