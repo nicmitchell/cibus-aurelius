@@ -9,7 +9,7 @@ export default class NewItem extends Component {
 
   render = () => {
     return (
-      <ItemForm handleSubmit={ this.handleSubmit } new/>
+      <ItemForm handleSubmit={ this.handleSubmit } className="show" new/>
     )
   }
 

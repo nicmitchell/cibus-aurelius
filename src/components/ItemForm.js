@@ -139,7 +139,6 @@ export default class ItemForm extends Component {
         <div className={ `single ${ this.state.imageStatus }` }>
           <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/>
         </div>
-        
         <div className="bottom">
           <h2>{ `${ this.state.title } Menu Item` } { this.renderDeleteButton() }</h2>
           <Form onSubmit={ (e) => this.handleSubmit(e) }>
