@@ -69,8 +69,8 @@ button {
 /****Home****/
 .home {
   position: relative;
-  top: -9.2rem;
-  margin-bottom: -9.2rem;
+  top: -7.2rem;
+  margin-bottom: -7.2rem;
   height: 92vh;
   overflow: hidden;
 }
@@ -155,6 +155,37 @@ button {
   background-blend-mode: none;
   filter: saturate(100%);
   transition: all 0.35s;
+}
+
+/****Home Media Queries****/
+/* Show vertical for > Medium */
+@media (min-width: 992px) {
+  .home .flex-container {
+    flex-direction: row;
+  }
+}
+
+/* Show vertical for < Medium */
+@media (max-width: 991px) {
+  .home {
+    top: -7.2rem;
+    margin-bottom: -3.5rem;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .home .flex-container {
+    flex-direction: column;
+    overflow: visible;
+  } 
+
+  .home .flex-item {
+    min-height: 34.5vh;
+  }
+
+  .home .flex-item h1 {
+    font-size: 6vw;
+  }
 }
 
 
