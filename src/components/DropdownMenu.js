@@ -3,7 +3,7 @@ import { MenuItem, NavDropdown, Glyphicon } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import firebase from 'firebase';
 
-export default class MenuDropdown extends React.Component {
+export default class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
     this.listenForAuthentication();
