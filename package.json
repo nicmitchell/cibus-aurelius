@@ -1,5 +1,5 @@
 {
-  "name": "react-app-dir",
+  "name": "cibus-aurelius",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "firebase": "^3.6.9",
-    "re-base": "^2.5.2",
     "react": "^15.4.1",
     "react-addons-css-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.7",
