@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Form, Button, Image, Modal } from 'react-bootstrap';
+import { Col, Form, Button, Image, Modal, Alert } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
 import * as fields from '../data/newFieldProperties';
 
@@ -134,6 +134,14 @@ export default class ItemForm extends Component {
 
   render = () => {
     const imgSrc = this.state.imagePreview || this.state.image;
+    if (!this.props.authStatus) {
+      return (
+        <Alert bsStyle="warning" className="container" >
+          <h3>You are not authorized to make this change</h3>
+        </Alert>
+      )
+    }
+
     return (
       <Col className={ `menu-card content ${ this.props.className }` }>
         <div className={ `single ${ this.state.imageStatus }` }>

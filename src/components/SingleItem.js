@@ -15,10 +15,11 @@ export default class SingleItem extends React.Component {
       options: '',
       recipe: '',
       imageStatus: 'hide',
-      showEdit: 'hide',
+      showForm: 'hide',
       showItem: 'show',
       editButtonText: 'Edit',
-      allowEdit: this.props.menu.userAuthStatus ? 'show' : 'hide',
+      editButtonClass: this.props.menu.userAuthStatus ? 'show' : 'hide',
+      allowEdit: this.props.menu.userAuthStatus,
       ...this.props.menu.currentMenuItem
     }
   }
@@ -35,9 +36,9 @@ export default class SingleItem extends React.Component {
 
   allowEdit = (authStatus) => {
     if (authStatus) {
-      this.setState({ allowEdit: 'show' });
+      this.setState({ editButtonClass: 'show', allowEdit: true });
     } else {
-      this.setState({ allowEdit: 'hide '});
+      this.setState({ editButtonClass: 'hide', allowEdit: false });
     }
   }
 
@@ -47,9 +48,9 @@ export default class SingleItem extends React.Component {
 
   toggleEdit = (e) => {
     e && e.preventDefault();
-    const showEdit = { showEdit: 'show', showItem: 'hide', editButtonText: 'Cancel' };
-    const showItem = { showEdit: 'hide', showItem: 'show', editButtonText: 'Edit' };
-    const editState = (this.state.showEdit === 'show') ? showItem : showEdit;
+    const showForm = { showForm: 'show', showItem: 'hide', editButtonText: 'Cancel' };
+    const showItem = { showForm: 'hide', showItem: 'show', editButtonText: 'Edit' };
+    const editState = (this.state.showForm === 'show') ? showItem : showForm;
     this.setState({ ...editState });
   }
 
@@ -65,7 +66,7 @@ export default class SingleItem extends React.Component {
 
   render() {
     const imgSrc = this.state.image;
-    const EditButton = () => <Button onClick={ (e) => this.toggleEdit(e) } className={ `edit ${ this.state.allowEdit }` }>{ this.state.editButtonText }</Button>;
+    const EditButton = () => <Button onClick={ (e) => this.toggleEdit(e) } className={ `edit ${ this.state.editButtonClass }` }>{ this.state.editButtonText }</Button>;
 
     return(
       <Grid className="single">
@@ -87,7 +88,13 @@ export default class SingleItem extends React.Component {
             }
           </div>
         </Col>
-        <ItemForm state={ this.state } className={ this.state.showEdit } handleSubmit={ this.handleSubmit } deleteItem={ this.deleteItem }/>
+        <ItemForm 
+          state={ this.state } 
+          className={ this.state.showForm } 
+          handleSubmit={ this.handleSubmit } 
+          deleteItem={ this.deleteItem } 
+          allowEdit={ this.state.allowEdit }
+        />
       </Grid>
     )
   }
