@@ -191,6 +191,9 @@ button {
   .home .flex-item h1 {
     font-size: 6vw;
   }
+  .home .flex-item.entree {
+    flex-grow: 1;
+  }
 }
 
 /* Show meal type choices as columns for < Medium in landscape*/
@@ -323,7 +326,7 @@ button {
 footer {
   display: flex;
   flex-grow: 0;
-  margin-top: 4rem;
+  margin-top: 4.5rem;
   color: #e2e2e2;
   font-size: 1.4rem;
   line-height: 1.8rem;
