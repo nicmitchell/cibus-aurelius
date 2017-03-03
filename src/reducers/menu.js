@@ -39,6 +39,12 @@ function menu(state = {}, action) {
       [state[mealType][id]]: action.values
     }
   }
+  if('USER_AUTH_STATUS' === action.type) {
+    return {
+      ...state,
+      userAuthStatus: action.value
+    }
+  }
   return state;
 }
 

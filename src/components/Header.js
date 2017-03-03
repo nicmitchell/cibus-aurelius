@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import MenuDropdown from './MenuDropdown';
+import DropdownMenu from './DropdownMenu';
 
 export default class Header extends React.Component {
   render() {
@@ -29,7 +29,7 @@ export default class Header extends React.Component {
             <LinkContainer to="/dessert">
               <NavItem eventKey={4}><Glyphicon glyph="ice-lolly-tasted" /> Dessert</NavItem>
             </LinkContainer>
-            <MenuDropdown/>
+            <DropdownMenu { ...this.props }/>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

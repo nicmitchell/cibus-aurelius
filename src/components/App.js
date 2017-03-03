@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header />
+        <Header authStatus={ this.props.menu.userAuthStatus } updateAuthStatus={ this.props.addUserAuthStatusToState } />
           { React.cloneElement({...this.props}.children, {...this.props}) }
         <Footer />
       </div>

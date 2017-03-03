@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Image, Glyphicon, Button } from 'react-bootstrap';
+import { Grid, Col, Image, Glyphicon, Button } from 'react-bootstrap';
 import ItemOptions from './ItemOptions';
 import ItemForm from './ItemForm';
 
@@ -18,6 +18,7 @@ export default class SingleItem extends React.Component {
       showEdit: 'hide',
       showItem: 'show',
       editButtonText: 'Edit',
+      allowEdit: this.props.menu.userAuthStatus ? 'show' : 'hide',
       ...this.props.menu.currentMenuItem
     }
   }
@@ -28,6 +29,15 @@ export default class SingleItem extends React.Component {
       this.setState({ imageStatus: 'hide' });
     } else {
       this.setState({ imageStatus: 'loading' });
+    }
+    this.allowEdit(nextProps.menu.userAuthStatus);
+  }
+
+  allowEdit = (authStatus) => {
+    if (authStatus) {
+      this.setState({ allowEdit: 'show' });
+    } else {
+      this.setState({ allowEdit: 'hide '});
     }
   }
 
@@ -55,6 +65,8 @@ export default class SingleItem extends React.Component {
 
   render() {
     const imgSrc = this.state.image;
+    const EditButton = () => <Button onClick={ (e) => this.toggleEdit(e) } className={ `edit ${ this.state.allowEdit }` }>{ this.state.editButtonText }</Button>;
+
     return(
       <Grid className="single">
         <Col className={ `menu-card content ${ this.state.showItem }` }>
@@ -62,7 +74,7 @@ export default class SingleItem extends React.Component {
             { this.state.image && <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/> }
           </div>
           <div className="bottom">
-            <h2 className="">{ this.state.name } <Button onClick={ (e) => this.toggleEdit(e) } className="edit">{ this.state.editButtonText }</Button></h2>
+            <h2 className="">{ this.state.name } <EditButton /></h2>
             <p>{ this.state.desc }</p>
             { this.state.side && <p>Side: { this.state.side } </p>}
             { this.state.time && <p className="prep-time"><Glyphicon glyph="time"/> { this.state.time }</p> }

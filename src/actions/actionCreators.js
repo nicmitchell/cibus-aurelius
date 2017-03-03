@@ -147,3 +147,10 @@ export function pushFirebaseError(error) {
     values: error
   }
 }
+
+export function addUserAuthStatusToState(value) {
+  return {
+    type: 'USER_AUTH_STATUS',
+    value
+  }
+}

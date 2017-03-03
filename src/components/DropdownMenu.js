@@ -6,15 +6,12 @@ import firebase from 'firebase';
 export default class MenuDropdown extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loggedIn: false
-    }
     this.listenForAuthentication();
   }
 
   listenForAuthentication = () => {
     firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ loggedIn: !!user });
+      this.props.updateAuthStatus(!!user);
     });
   }
 
@@ -44,8 +41,8 @@ export default class MenuDropdown extends React.Component {
 
     return (
       <NavDropdown eventKey={5} title="" id="menu-more-options">
-        { !this.state.loggedIn && <AuthWall />}
-        { this.state.loggedIn && <AddItem />}
+        { !this.props.authStatus && <AuthWall />}
+        { this.props.authStatus && <AddItem />}
       </NavDropdown>
     )
   }  
