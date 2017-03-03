@@ -11,7 +11,7 @@ The bonus features of the DVD showed Robert Rodriguez demonstrating how to make 
 This project was created as a simple way for me to catalog the things I like cooking and to present a menu to visitors. 
 
 ## Features
-Uses React, React Bootstrap, Redux, Firebase data, storage, and authorization
+Uses React, React Router, React Bootstrap, Redux, Firebase data, storage, and authorization
 
 ## Installation/Configuration
 - `npm install`
