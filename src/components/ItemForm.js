@@ -168,6 +168,7 @@ export default class ItemForm extends Component {
   }
 
   static propTypes = {
+    authStatus: React.PropTypes.bool.isRequired,
     className: React.PropTypes.string,
     handleSubmit: React.PropTypes.func.isRequired,
     state: React.PropTypes.object

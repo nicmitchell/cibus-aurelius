@@ -93,7 +93,7 @@ export default class SingleItem extends React.Component {
           className={ this.state.showForm } 
           handleSubmit={ this.handleSubmit } 
           deleteItem={ this.deleteItem } 
-          allowEdit={ this.state.allowEdit }
+          authStatus={ !!this.state.allowEdit }
         />
       </Grid>
     )
