@@ -29,8 +29,3 @@ Uses React, React Router, React Bootstrap, Redux, Firebase data, storage, and au
 - Add additional auth methods (Facebook, email, etc)
 - Better image handling (currently only 1000px wide work best)
 - Distraction animation while loading
-
-## Screenshots
-![Home](http://imgur.com/l8nvgzP)
-![Grid](http://imgur.com/591d9iT)
-![Single](http://imgur.com/lGFIOkH)
