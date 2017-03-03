@@ -6,15 +6,15 @@ export default class MenuGrid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: this.sortByImage(this.props.menu[this.props.params.mealType]),
+      mealType: this.props.params.mealType
     }
   }
 
-  componentDidMount = () => {
-    const menu = this.props.menu;
-    const mealType = this.state.mealType;
-    const items = this.sortByImage(menu[mealType]);
-    this.setState({ items, mealType });
+  arrayify(object={}) {
+    return Object.keys(object).map(key => {
+      return { ...object[key], key: key };
+    });
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -25,13 +25,10 @@ export default class MenuGrid extends React.Component {
   }
 
   sortByImage = (items={}) => {
-    const itemsArray = Object.keys(items).map(key => Object.assign({}, items[key], { key: key }));
-    const sortedItems = itemsArray.sort((a, b) => {
-      if (a.image && b.image) return 0;
-      if (a.image && !b.image) return -1;
-      if (!a.image && b.image) return 1;
+    const itemsArray = this.arrayify(items);
+    return itemsArray.sort((a, b) => {
+      return !!b.image - !!a.image;
     });
-    return sortedItems;
   }
 
   render = () => {
