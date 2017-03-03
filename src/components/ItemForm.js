@@ -136,7 +136,7 @@ export default class ItemForm extends Component {
     const imgSrc = this.state.imagePreview || this.state.image;
     if (!this.props.authStatus) {
       return (
-        <Alert bsStyle="warning" className="container" >
+        <Alert bsStyle="warning" className={ `container ${ this.props.className }` }>
           <h3>You are not authorized to make this change</h3>
         </Alert>
       )
@@ -169,7 +169,7 @@ export default class ItemForm extends Component {
 
   static propTypes = {
     authStatus: React.PropTypes.bool.isRequired,
-    className: React.PropTypes.string,
+    className: React.PropTypes.string.isRequired,
     handleSubmit: React.PropTypes.func.isRequired,
     state: React.PropTypes.object
   }
