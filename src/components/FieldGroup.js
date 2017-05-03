@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Editor } from 'react-draft-wysiwyg';
 import '../react-draft-wysiwyg.css';
+import '../react-draft-wysiwyg-custom.css';
 
 export default class FieldGroup extends Component {
   constructor(props) {
@@ -43,7 +44,6 @@ export default class FieldGroup extends Component {
 
   renderSelect(props, options) {
     const value = props.value || 'select';
-    console.log(props)
     return (
       <FormControl { ...props } value={ value }>
         { 

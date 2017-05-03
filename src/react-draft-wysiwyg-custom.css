@@ -1,0 +1,19 @@
+.rdw-editor-main {
+  box-sizing: border-box;
+}
+
+.rdw-editor-toolbar {
+  border: 0;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 0;
+}
+
+div#rdw-wrapper519 {
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.DraftEditor-editorContainer {
+  padding: 0 1rem;
+  color: #555;
+}
