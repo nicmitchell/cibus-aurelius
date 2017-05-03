@@ -49,7 +49,6 @@ export default class FieldGroup extends Component {
         { 
           Object.keys(options)
             .map((option) => {
-              console.log(option);
               return <option key={ option } value={ option }>{options[option]}</option>
             })
         }

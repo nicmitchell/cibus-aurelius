@@ -417,6 +417,7 @@ footer {
   background-color: transparent;
   float: right;
   border-width: 2px;
+  margin-right: 1rem;
 }
 
 .menu-card button.delete {

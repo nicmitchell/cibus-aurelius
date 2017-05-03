@@ -14,13 +14,18 @@ export default class NewItem extends Component {
     this.props.router.push(`/${ item.type }`);
   }
 
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.props.router.goBack();
+  }
+
   componentWillReceiveProps = (nextProps) => {
     this.setState({ authStatus: nextProps.menu.userAuthStatus });
   }
 
   render = () => {
     return (
-      <ItemForm handleSubmit={ this.handleSubmit } className="show" authStatus={ this.state.authStatus } new/>
+      <ItemForm handleSubmit={ this.handleSubmit } className="show" authStatus={ this.state.authStatus } handleCancel={ (e) => this.handleCancel(e) } new/>
     )
   }
 

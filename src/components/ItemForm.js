@@ -72,7 +72,6 @@ export default class ItemForm extends Component {
 
   handleTextEditorChange = (editorState) => {
     const recipe = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-    console.log(recipe);
     this.setState({
       editorState,
       recipe
@@ -140,7 +139,11 @@ export default class ItemForm extends Component {
   }
 
   renderDeleteButton() {
-    return <Button bsStyle="danger" className="delete" onClick={ (e) => this.setState({ showModal: true }) }>Delete</Button>
+    return (!this.props.new) ? <Button bsStyle="danger" className="delete" onClick={ (e) => this.setState({ showModal: true }) }>Delete</Button> : '';
+  }
+
+  renderCancelButton = (e) => {
+    return <Button onClick={ (e) => this.props.handleCancel(e) } className="edit">Cancel</Button>;
   }
 
   render = () => {
@@ -159,7 +162,7 @@ export default class ItemForm extends Component {
           <Image responsive src={ imgSrc } onLoad={ (e) => this.imageLoaded(e) }/>
         </div>
         <div className="bottom">
-          <h2>{ `${ this.state.title } Menu Item` } { this.renderDeleteButton() }</h2>
+          <h2>{ `${ this.state.title } Menu Item` } { this.renderCancelButton() } { this.renderDeleteButton() }</h2>
           <Form onSubmit={ (e) => this.handleSubmit(e) }>
             <FieldGroup inputProps={ fields.name } handleChange={ this.handleChange } value={ this.state.name }/>
             <FieldGroup inputProps={ fields.desc } handleChange={ this.handleChange } value={ this.state.desc }/>
