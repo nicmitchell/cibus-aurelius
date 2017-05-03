@@ -34,10 +34,9 @@ function menu(state = {}, action) {
   if ('SAVE_MENU_ITEM' === action.type) {
     const mealType = action.values.type;
     const id = action.values.id;
-    return { 
-      ...state,
-      [state[mealType][id]]: action.values
-    }
+    const newState = { ...state };
+    newState[mealType][id] = action.values;
+    return newState;
   }
   if('USER_AUTH_STATUS' === action.type) {
     return {

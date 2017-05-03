@@ -438,17 +438,17 @@ footer {
 
 /* New Item */
 .form-group input[type=file] {
-    background: #fff;
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid #ccc;
+  background: #fff;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ccc;
 }
 
 .form-group.has-error input[type=file] {
-    background: #fff;
-    width: 100%;
-    padding: 1rem;
-    border-color: #a94442;
+  background: #fff;
+  width: 100%;
+  padding: 1rem;
+  border-color: #a94442;
 }
 
 .hide {

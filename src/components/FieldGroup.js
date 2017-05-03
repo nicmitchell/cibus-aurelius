@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { Editor } from 'react-draft-wysiwyg';
+import '../react-draft-wysiwyg.css';
 
 export default class FieldGroup extends Component {
   constructor(props) {
@@ -40,11 +42,14 @@ export default class FieldGroup extends Component {
   }
 
   renderSelect(props, options) {
+    const value = props.value || 'select';
+    console.log(props)
     return (
-      <FormControl { ...props }>
+      <FormControl { ...props } value={ value }>
         { 
           Object.keys(options)
             .map((option) => {
+              console.log(option);
               return <option key={ option } value={ option }>{options[option]}</option>
             })
         }
@@ -54,6 +59,10 @@ export default class FieldGroup extends Component {
 
   renderInput(props) {
     return <FormControl { ...props } value={ props.value }/>
+  }
+
+  renderTextarea(props) {
+    return <Editor editorState={ this.props.editorState } onEditorStateChange={ this.props.handleChange } />;
   }
 
   render() {
@@ -67,7 +76,9 @@ export default class FieldGroup extends Component {
     const showInput = (props, options) => {
       if (props.componentClass === 'select') {
         return ( this.renderSelect(props, options) );
-      } else { // text, textarea, and file
+      } else if (props.componentClass === 'textarea') {
+        return ( this.renderTextarea(props) );
+      } else { // text, and file
         return ( this.renderInput(props) );
       }
     }
@@ -83,6 +94,6 @@ export default class FieldGroup extends Component {
   static propTypes = {
     inputProps: React.PropTypes.object.isRequired,
     handleChange: React.PropTypes.func.isRequired,
-    value: React.PropTypes.string
+    // value: React.PropTypes.string
   }
 }

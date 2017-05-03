@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Form, Button, Image, Modal, Alert } from 'react-bootstrap';
 import FieldGroup from './FieldGroup';
+import draftToHtml from 'draftjs-to-html';
+import { convertToRaw } from 'draft-js';
 import * as fields from '../data/newFieldProperties';
 
 export default class ItemForm extends Component {
@@ -66,6 +68,15 @@ export default class ItemForm extends Component {
       this.showFileError();
     }
     this.checkButtonState();
+  }
+
+  handleTextEditorChange = (editorState) => {
+    const recipe = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    console.log(recipe);
+    this.setState({
+      editorState,
+      recipe
+    });
   }
 
   showFileError = () => {
@@ -158,7 +169,7 @@ export default class ItemForm extends Component {
             <hr />
             <h3>Optional</h3>
             <FieldGroup inputProps={ fields.side } handleChange={ this.handleChange } value={ this.state.side }/>
-            <FieldGroup inputProps={ fields.recipe } handleChange={ this.handleChange } value={ this.state.recipe }/>
+            <FieldGroup inputProps={ fields.recipe } handleChange={ this.handleTextEditorChange } editorState={ this.state.editorState }/>
             <Button block type="submit" disabled={ this.state.isDisabled }>Save</Button>
           </Form>
         </div>
@@ -168,7 +179,7 @@ export default class ItemForm extends Component {
   }
 
   static propTypes = {
-    authStatus: React.PropTypes.bool.isRequired,
+    authStatus: React.PropTypes.bool,
     className: React.PropTypes.string.isRequired,
     handleSubmit: React.PropTypes.func.isRequired,
     state: React.PropTypes.object

@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Col, Image, Glyphicon, Button } from 'react-bootstrap';
 import ItemOptions from './ItemOptions';
 import ItemForm from './ItemForm';
+import { EditorState, ContentState } from 'draft-js';
+import htmlToDraft from 'html-to-draftjs';
 
 export default class SingleItem extends React.Component {
   constructor(props) {
@@ -14,6 +16,7 @@ export default class SingleItem extends React.Component {
       time: '',
       options: '',
       recipe: '',
+      editorState: EditorState.createEmpty(),
       imageStatus: 'hide',
       showForm: 'hide',
       showItem: 'show',
@@ -24,6 +27,10 @@ export default class SingleItem extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.translateRecipe(this.props);
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({ ...nextProps.menu.currentMenuItem });
     if (!nextProps.image) {
@@ -31,6 +38,7 @@ export default class SingleItem extends React.Component {
     } else {
       this.setState({ imageStatus: 'loading' });
     }
+    this.translateRecipe(nextProps);
     this.allowEdit(nextProps.menu.userAuthStatus);
   }
 
@@ -39,6 +47,15 @@ export default class SingleItem extends React.Component {
       this.setState({ editButtonClass: 'show', allowEdit: true });
     } else {
       this.setState({ editButtonClass: 'hide', allowEdit: false });
+    }
+  }
+
+  translateRecipe = (props) => {
+    if (props.menu.currentMenuItem && props.menu.currentMenuItem.recipe) {
+      const recipe = htmlToDraft(props.menu.currentMenuItem.recipe);
+      const contentState = ContentState.createFromBlockArray(recipe.contentBlocks)
+      const editorState = EditorState.createWithContent(contentState);
+      this.setState({ editorState });
     }
   }
 
@@ -83,7 +100,7 @@ export default class SingleItem extends React.Component {
             { this.state.recipe && 
               <div>
                 <h3>Recipe</h3>
-                { this.state.recipe }
+                <div dangerouslySetInnerHTML={{ __html: this.state.recipe }} />
               </div>
             }
           </div>

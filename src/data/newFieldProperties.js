@@ -18,7 +18,7 @@ export const type = {
   name: "type",
   componentClass: "select",
   label: "Select a category",
-  placeholder: "Type",
+  placeholder: "select",
   required: true,
   options: {
     select: ' ... ',
