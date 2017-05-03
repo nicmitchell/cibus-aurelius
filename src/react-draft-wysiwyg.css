@@ -941,7 +941,7 @@
   height: 100%;
   width: 100%;
   overflow: auto;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 .rdw-editor-toolbar {
   padding: 6px 5px 0;
@@ -963,13 +963,27 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  border: 0;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 0;
 }
+
 .public-DraftStyleDefault-block {
   margin: 1em 0;
 }
 .rdw-editor-wrapper:focus {
   outline: none;
 }
+.rdw-editor-wrapper {
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.DraftEditor-editorContainer {
+  padding: 0 1rem;
+  color: #555;
+}
+
 /**
  * Draft v0.9.1
  *
